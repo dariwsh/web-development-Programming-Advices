@@ -1,19 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>22 - Eager and Auto Loading</title>
+    <title>Lazy Loading Example</title>
 </head>
 <body >
     <h1>My Gallery of Nature</h1>
     
     <!-- Ensure that critical images that appear above the fold are not lazy-loaded, as this could delay their visibility. -->
 
-    <img src="images/diving4.jpg" alt="Abu-Hadhoud Diving in Sharm"  style="width: 80%;height: auto;">
-    <img src="images/diving6.jpg" alt="Abu-Hadhoud Diving in Tailand"  style="width: 60%;height: auto;">
+    <!-- Browser will decide on loading based on network trafic, even if there is no loading="auto" -->
+    <img src="images/diving4.jpg" alt="Abu-Hadhoud Diving in Sharm" loading="auto"  style="width: 80%;height: auto;">
+   
+    <!-- Images near the top of the page loaded eagerly -->
+    <img src="images/diving6.jpg" alt="Abu-Hadhoud Diving in Tailand" loading="eager" style="width: 60%;height: auto;">
 
     
+    <!-- Subsequent images loaded lazily -->
     <p>Scroll down to see images load as they come into view.</p>
     <div style="height: 800px;">Scroll down</div>
    
