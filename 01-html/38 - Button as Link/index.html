@@ -8,16 +8,34 @@
   <body>
     <h1>Button as Link</h1>
     <p>Click the button to below to vist programming advice</p>
-    <P> 
-      <button onclick="window.location.href='https://www.programmingAdvices.com';">Visit Programming Advices</button>
-    </P>
+    <p>
+      <button
+        onclick="window.location.href = 'https://www.programmingAdvices.com'"
+      >
+        Visit Programming Advices
+      </button>
+    </p>
 
-     <P> 
-      <button onclick="window.open('https://www.programmingAdvices.com' , '_blank');">Visit Programming Advices</button>
-    </P>
+    <p>
+      <button
+        onclick="window.open('https://www.programmingAdvices.com', '_blank')"
+      >
+        Visit Programming Advices
+      </button>
+    </p>
 
-     <P> 
-      <button onclick="window.open('https://www.programmingAdvices.com' , '_blank' , 'width=800,height=600');">Visit Programming Advices</button>
-    </P>
+    <p>
+      <button
+        onclick="
+          window.open(
+            'https://www.programmingAdvices.com',
+            '_blank',
+            'width=800,height=600',
+          )
+        "
+      >
+        Visit Programming Advices
+      </button>
+    </p>
   </body>
 </html>

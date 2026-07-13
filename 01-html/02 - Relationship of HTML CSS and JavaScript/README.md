@@ -17,11 +17,11 @@ In this lesson, we learned about:
 
 Each technology has its own role:
 
-| Technology | Role | Analogy |
-| ---------- | ---- | ------- |
-| **HTML** | Structure & Content | 🏗️ The skeleton of a building |
-| **CSS** | Styling & Appearance | 🎨 The paint, furniture, and decoration |
-| **JavaScript** | Behavior & Interactivity | ⚡ The electricity and moving parts |
+| Technology     | Role                     | Analogy                                 |
+| -------------- | ------------------------ | --------------------------------------- |
+| **HTML**       | Structure & Content      | 🏗️ The skeleton of a building           |
+| **CSS**        | Styling & Appearance     | 🎨 The paint, furniture, and decoration |
+| **JavaScript** | Behavior & Interactivity | ⚡ The electricity and moving parts     |
 
 > Together, they create the complete web experience the user sees and interacts with.
 
@@ -34,61 +34,62 @@ Each technology has its own role:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>02 - Relationship of HTML CSS and JavaScript</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
 
-        h1 {
-            color: #333;
-        }
+      h1 {
+        color: #333;
+      }
 
-        #content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+      #content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
 
-        button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+      button:hover {
+        background-color: #0056b3;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Welcome to our page</h1>
     <div id="content">
-        <p>This is a dynamic content area. Click the button to change the text color.</p>
-        <button onclick="changeTextColor()">Change Text Color</button>
+      <p>
+        This is a dynamic content area. Click the button to change the text
+        color.
+      </p>
+      <button onclick="changeTextColor()">Change Text Color</button>
     </div>
 
     <script>
-        function changeTextColor() {
-            var content = document.getElementById('content');
-            content.style.color = content.style.color === 'red' ? 'black' : 'red';
-        }
+      function changeTextColor() {
+        var content = document.getElementById("content");
+        content.style.color = content.style.color === "red" ? "black" : "red";
+      }
     </script>
-</body>
-
+  </body>
 </html>
 ```
 
@@ -103,8 +104,8 @@ The HTML gives the page its structure and content:
 ```html
 <h1>Welcome to our page</h1>
 <div id="content">
-    <p>This is a dynamic content area.</p>
-    <button onclick="changeTextColor()">Change Text Color</button>
+  <p>This is a dynamic content area.</p>
+  <button onclick="changeTextColor()">Change Text Color</button>
 </div>
 ```
 
@@ -118,19 +119,19 @@ The CSS controls how the page looks:
 
 ```css
 #content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 ```
 
@@ -144,8 +145,8 @@ JavaScript adds interactivity to the page:
 
 ```javascript
 function changeTextColor() {
-    var content = document.getElementById('content');
-    content.style.color = content.style.color === 'red' ? 'black' : 'red';
+  var content = document.getElementById("content");
+  content.style.color = content.style.color === "red" ? "black" : "red";
 }
 ```
 
@@ -203,34 +204,34 @@ function changeTextColor() {
 
 # 🧩 Ways to Add CSS
 
-| Method | Example | When to Use |
-| ------ | ------- | ----------- |
-| **Inline** | `<p style="color: red;">` | Quick testing only |
-| **Internal** | `<style>` inside `<head>` | Single page styles |
-| **External** | `<link rel="stylesheet" href="style.css">` | Best practice ✅ |
+| Method       | Example                                    | When to Use        |
+| ------------ | ------------------------------------------ | ------------------ |
+| **Inline**   | `<p style="color: red;">`                  | Quick testing only |
+| **Internal** | `<style>` inside `<head>`                  | Single page styles |
+| **External** | `<link rel="stylesheet" href="style.css">` | Best practice ✅   |
 
 ---
 
 # 🧩 Ways to Add JavaScript
 
-| Method | Example | When to Use |
-| ------ | ------- | ----------- |
-| **Inline** | `onclick="doSomething()"` | Quick testing only |
-| **Internal** | `<script>` inside HTML | Single page scripts |
-| **External** | `<script src="script.js">` | Best practice ✅ |
+| Method       | Example                    | When to Use         |
+| ------------ | -------------------------- | ------------------- |
+| **Inline**   | `onclick="doSomething()"`  | Quick testing only  |
+| **Internal** | `<script>` inside HTML     | Single page scripts |
+| **External** | `<script src="script.js">` | Best practice ✅    |
 
 ---
 
 # ✅ Summary
 
-| Concept | Meaning |
-| ------- | ------- |
-| HTML | Defines the structure and content |
-| CSS | Controls the visual appearance |
-| JavaScript | Adds dynamic behavior and interactivity |
-| Together | They create a complete web experience |
-| Separation | Each technology should handle its own responsibility |
-| Best Practice | Use external files for CSS and JavaScript |
+| Concept       | Meaning                                              |
+| ------------- | ---------------------------------------------------- |
+| HTML          | Defines the structure and content                    |
+| CSS           | Controls the visual appearance                       |
+| JavaScript    | Adds dynamic behavior and interactivity              |
+| Together      | They create a complete web experience                |
+| Separation    | Each technology should handle its own responsibility |
+| Best Practice | Use external files for CSS and JavaScript            |
 
 ---
 

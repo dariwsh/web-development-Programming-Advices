@@ -17,12 +17,12 @@ In this lesson, we learned about:
 
 CSS is used to **transform a plain HTML page** into a visually styled one by controlling:
 
-| Property | What It Does | Example |
-| -------- | ------------ | ------- |
-| **font-family** | Changes the text font | `Arial, sans-serif` |
-| **background-color** | Sets the background color | `#f0f0f0` |
-| **color** | Changes the text color | `blue`, `#333`, `red` |
-| **font-size** | Controls the text size | `16px` |
+| Property             | What It Does              | Example               |
+| -------------------- | ------------------------- | --------------------- |
+| **font-family**      | Changes the text font     | `Arial, sans-serif`   |
+| **background-color** | Sets the background color | `#f0f0f0`             |
+| **color**            | Changes the text color    | `blue`, `#333`, `red` |
+| **font-size**        | Controls the text size    | `16px`                |
 
 > By adding a `<style>` block inside the `<head>`, we can style the entire page without changing the HTML structure.
 
@@ -35,39 +35,37 @@ CSS is used to **transform a plain HTML page** into a visually styled one by con
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>03 - Adding CSS to Our Example</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
 
-        h1 {
-            color: blue;
-        }
+      h1 {
+        color: blue;
+      }
 
-        p {
-            color: #333;
-            font-size: 16px;
-        }
+      p {
+        color: #333;
+        font-size: 16px;
+      }
 
-        b {
-            color: red;
-        }
+      b {
+        color: red;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Welcome to HTML</h1>
     <p>This is my <b>First</b> paragraph.</p>
     <p>This is my <b>Second</b> paragraph</p>
-    <p>This is my third <b>paragraph</b> </p>
-</body>
-
+    <p>This is my third <b>paragraph</b></p>
+  </body>
 </html>
 ```
 
@@ -79,8 +77,8 @@ CSS is used to **transform a plain HTML page** into a visually styled one by con
 
 ```css
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 ```
 
@@ -93,7 +91,7 @@ body {
 
 ```css
 h1 {
-    color: blue;
+  color: blue;
 }
 ```
 
@@ -105,8 +103,8 @@ h1 {
 
 ```css
 p {
-    color: #333;
-    font-size: 16px;
+  color: #333;
+  font-size: 16px;
 }
 ```
 
@@ -118,7 +116,7 @@ p {
 
 ```css
 b {
-    color: red;
+  color: red;
 }
 ```
 
@@ -180,12 +178,12 @@ b {
 
 # 🧩 CSS Selectors Used in This Lesson
 
-| Selector | What It Targets | Example |
-| -------- | --------------- | ------- |
-| `body` | The entire page body | `body { background-color: #f0f0f0; }` |
-| `h1` | All `<h1>` headings | `h1 { color: blue; }` |
-| `p` | All `<p>` paragraphs | `p { color: #333; }` |
-| `b` | All `<b>` bold elements | `b { color: red; }` |
+| Selector | What It Targets         | Example                               |
+| -------- | ----------------------- | ------------------------------------- |
+| `body`   | The entire page body    | `body { background-color: #f0f0f0; }` |
+| `h1`     | All `<h1>` headings     | `h1 { color: blue; }`                 |
+| `p`      | All `<p>` paragraphs    | `p { color: #333; }`                  |
+| `b`      | All `<b>` bold elements | `b { color: red; }`                   |
 
 > These are called **Element Selectors** (or **Type Selectors**) — they target all elements of a specific HTML tag.
 
@@ -193,25 +191,25 @@ b {
 
 # 🧩 Ways to Add CSS (Review)
 
-| Method | Example | Used Here? |
-| ------ | ------- | ---------- |
-| **Inline** | `<p style="color: red;">` | ❌ No |
-| **Internal** | `<style>` inside `<head>` | ✅ Yes |
-| **External** | `<link rel="stylesheet" href="style.css">` | ❌ No |
+| Method       | Example                                    | Used Here? |
+| ------------ | ------------------------------------------ | ---------- |
+| **Inline**   | `<p style="color: red;">`                  | ❌ No      |
+| **Internal** | `<style>` inside `<head>`                  | ✅ Yes     |
+| **External** | `<link rel="stylesheet" href="style.css">` | ❌ No      |
 
 ---
 
 # ✅ Summary
 
-| Concept | Meaning |
-| ------- | ------- |
-| Internal CSS | Writing CSS inside a `<style>` tag in the `<head>` |
-| Element Selector | Targeting elements by their tag name (h1, p, b) |
-| font-family | Sets the font used for text |
-| background-color | Changes the background color of an element |
-| color | Changes the text color |
-| font-size | Sets the size of the text |
-| Hex Colors | Color values like `#f0f0f0` and `#333` |
+| Concept          | Meaning                                            |
+| ---------------- | -------------------------------------------------- |
+| Internal CSS     | Writing CSS inside a `<style>` tag in the `<head>` |
+| Element Selector | Targeting elements by their tag name (h1, p, b)    |
+| font-family      | Sets the font used for text                        |
+| background-color | Changes the background color of an element         |
+| color            | Changes the text color                             |
+| font-size        | Sets the size of the text                          |
+| Hex Colors       | Color values like `#f0f0f0` and `#333`             |
 
 ---
 

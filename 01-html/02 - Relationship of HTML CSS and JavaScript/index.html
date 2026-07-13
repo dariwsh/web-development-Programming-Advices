@@ -1,58 +1,59 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>02 - Relationship of HTML CSS and JavaScript</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
 
-        h1 {
-            color: #333;
-        }
+      h1 {
+        color: #333;
+      }
 
-        #content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+      #content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
 
-        button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+      button:hover {
+        background-color: #0056b3;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <h1>Welecome to our page </h1>
-       <div id="content">
-        <p>This is a dynamic content area. Click the button to change the text color.</p>
-        <button onclick="changeTextColor()">Change Text Color</button>
+  <body>
+    <h1>Welecome to our page</h1>
+    <div id="content">
+      <p>
+        This is a dynamic content area. Click the button to change the text
+        color.
+      </p>
+      <button onclick="changeTextColor()">Change Text Color</button>
     </div>
 
-   <script>
-        function changeTextColor() {
-            var content = document.getElementById('content');
-            content.style.color = content.style.color === 'red' ? 'black' : 'red';
-        }
+    <script>
+      function changeTextColor() {
+        var content = document.getElementById("content");
+        content.style.color = content.style.color === "red" ? "black" : "red";
+      }
     </script>
-</body>
-
+  </body>
 </html>

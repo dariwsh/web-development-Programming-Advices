@@ -31,22 +31,18 @@ It is used to structure text, links, images, and other content on a web page.
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01 - What is HTML and Why</title>
-</head>
+  </head>
 
-<body>
-    <h1>What is html </h1>
-    <p>HTML is not about how things look.
-        It is about what things mean.
-    </p>
+  <body>
+    <h1>What is html</h1>
+    <p>HTML is not about how things look. It is about what things mean.</p>
     <a href="https://www.example.com">Visit Example</a>
-    <img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
-</body>
-
+    <img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600" />
+  </body>
 </html>
 ```
 
@@ -57,29 +53,32 @@ It is used to structure text, links, images, and other content on a web page.
 **✅ Main parts of an HTML document:**
 
 **Document Type:**
+
 ```html
 <!DOCTYPE html>
 ```
 
 **HTML Root Element:**
+
 ```html
-<html lang="en">
-</html>
+<html lang="en"></html>
 ```
 
 **Head Section:**
+
 ```html
 <head>
-    <meta charset="UTF-8">
-    <title>Page Title</title>
+  <meta charset="UTF-8" />
+  <title>Page Title</title>
 </head>
 ```
 
 **Body Section:**
+
 ```html
 <body>
-    <h1>Main Heading</h1>
-    <p>Page content goes here.</p>
+  <h1>Main Heading</h1>
+  <p>Page content goes here.</p>
 </body>
 ```
 
@@ -112,29 +111,29 @@ It gives meaning and structure to the page content.
 
 # 🧩 HTML Checklist
 
-| Part | Meaning | Example |
-| ---- | ------- | ------- |
-| Doctype | Defines HTML5 document | `<!DOCTYPE html>` |
-| Root | Contains the whole page | `<html>` |
-| Head | Page settings and information | `<head>` |
-| Title | Browser tab title | `<title>` |
-| Body | Visible page content | `<body>` |
-| Heading | Main title in the page | `<h1>` |
-| Paragraph | Text block | `<p>` |
-| Link | Clickable URL | `<a>` |
-| Image | Displays an image | `<img>` |
+| Part      | Meaning                       | Example           |
+| --------- | ----------------------------- | ----------------- |
+| Doctype   | Defines HTML5 document        | `<!DOCTYPE html>` |
+| Root      | Contains the whole page       | `<html>`          |
+| Head      | Page settings and information | `<head>`          |
+| Title     | Browser tab title             | `<title>`         |
+| Body      | Visible page content          | `<body>`          |
+| Heading   | Main title in the page        | `<h1>`            |
+| Paragraph | Text block                    | `<p>`             |
+| Link      | Clickable URL                 | `<a>`             |
+| Image     | Displays an image             | `<img>`           |
 
 ---
 
 # ✅ Summary
 
-| Concept | Meaning |
-| ------- | ------- |
-| HTML | HyperText Markup Language |
-| Purpose | Structure web pages |
-| Type | Markup language |
-| Browser | Reads HTML and displays content |
-| Works With | CSS and JavaScript |
+| Concept    | Meaning                         |
+| ---------- | ------------------------------- |
+| HTML       | HyperText Markup Language       |
+| Purpose    | Structure web pages             |
+| Type       | Markup language                 |
+| Browser    | Reads HTML and displays content |
+| Works With | CSS and JavaScript              |
 
 ---
 

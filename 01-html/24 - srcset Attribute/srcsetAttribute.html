@@ -1,25 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Image with srcset</title>
-</head>
-<body >
-
+  </head>
+  <body>
     <h1>Responsive Image Example using srcset</h1>
-    <img src="Images/default-image.jpg"
-         srcset="Images/small-image.jpg 500w,
-                 Images/medium-image.jpg 1000w,
-                 Images/large-image.jpg 1500w"
-         sizes="(max-width: 600px) 480px,
+    <img
+      src="Images/default-image.jpg"
+      srcset="
+        Images/small-image.jpg   500w,
+        Images/medium-image.jpg 1000w,
+        Images/large-image.jpg  1500w
+      "
+      sizes="(max-width: 600px) 480px,
                 (max-width: 900px) 800px,
                 1200px"
-         alt="Responsive Image">
-    <p>This image uses the srcset attribute to load different image sizes based on the viewport width.</p>
+      alt="Responsive Image"
+    />
+    <p>
+      This image uses the srcset attribute to load different image sizes based
+      on the viewport width.
+    </p>
 
-
-<!-- 
+    <!-- 
 Breakdown of the Example
 src Attribute:
 
@@ -44,11 +49,5 @@ How It Works
     This setup provides a responsive image solution that adapts to different screen sizes, ensuring efficient use of bandwidth and optimal image display.
 
 -->
-
-    
-
-
-   
-    
-</body>
+  </body>
 </html>
