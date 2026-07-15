@@ -1,9 +1,91 @@
 ﻿<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>49 - Understanding HTML Semantic Elements</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>49 - Understanding HTML Semantic Elements</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header,
+    footer,
+    article,
+    nav,
+    aside {
+      border: 1px solid #ccc;
+      padding: 8px;
+      margin: 10px;
+    }
+
+    figure {
+      margin: 10px;
+    }
+
+    figcaption {
+      font-style: italic;
+    }
+
+    time {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>
+      My Blog
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h2>The Importance of Semantic HTML</h2>
+        <time datetime="2023-01-23">Published on January 23, 2023</time>
+      </header>
+      <figure>
+        <img src="html.png" style="width: 30px; height: 3px;" alt="Semantic HTML Example" />
+        <figcaption>Figure 1: Example of Semantic HTML Elements</figcaption>
+      </figure>
+      <p>Using <mark>semantic elements</mark> in HTML helps improve accessibility and search engine optimization.
+        Semantic tags provide information about the contents of those tags, making it easier for search engines and
+        assistive devices to serve users better.</p>
+      <footer>
+        written by the Editorial Team.
+      </footer>
+    </article>
+    <aside>
+      <h3>Related Posts</h3>
+      <ul>
+        <li><a href="#">Using CSS for Effective Styling</a></li>
+        <li><a href="#">Introduction to JavaScript</a></li>
+      </ul>
+    </aside>
+    <section>
+       <h3>User Comments</h3>
+            <!-- Details element, used for disclosure widgets from which the user can retrieve additional information -->
+            <details>
+                <!-- Summary element, specifies a summary, caption, or legend for a details element -->
+                <summary>View comments (2)</summary>
+                <p>Jane Doe: Great article!</p>
+                <p>John Smith: Very informative. Thanks!</p>
+            </details>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 My Blog. All rights reserved.</p>
+  </footer>
+</body>
+
 </html>
