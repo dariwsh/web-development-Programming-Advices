@@ -5,5 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>52 - Understanding the HTML video Tag</title>
   </head>
-  <body></body>
+  <body>
+    <p align="center">
+      <video controls poster="Thumb.jpg" width="640" height="360" muted autoplay loop >
+        <source src="Funny.mp4" type="video/mp4" />
+        <source src="Funny.webm" type="video/webm" />
+        <track
+          src="subtitles_en.vtt"
+          kind="subtitles"
+          srclang="en"
+          label="English"
+        />
+        <track
+          src="subtitles_de.vtt"
+          kind="subtitles"
+          srclang="de"
+          label="Deutsch"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </p>
+  </body>
 </html>

@@ -5,5 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>54 - Form Creation in HTML</title>
   </head>
-  <body></body>
+
+  <body>
+    <h1>Contact Information</h1>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" /><br /><br />
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferences</legend>
+        <p>Subscription Type:</p>
+        <label for="basic">Basic</label>
+        <input
+          type="radio"
+          id="basic"
+          name="subscription"
+          value="basic"
+          checked
+        />
+        <label for="premium">Premium</label>
+        <input type="radio" id="premium" name="subscription" value="premium" />
+
+        <p>Newsletter:</p>
+        <label for="subscribe">Subscribe to newsletter?</label>
+        <input type="checkbox" id="subscribe" name="subscribe" checked />
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+          <option value="usa">United States</option>
+          <option value="canada">Canada</option>
+          <option value="uk">United Kingdom</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your message</legend>
+        <label for="message">Message:</label><br />
+        <textarea id="message" name="message" rows="4" cols="50">
+Enter your message here...</textarea
+        >
+      </fieldset>
+
+      <br />
+      <button type="submit" align="center">Send</button>
+    </form>
+  </body>
 </html>
