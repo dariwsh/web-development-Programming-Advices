@@ -1,0 +1,16 @@
+body
+{
+    background-color: #f4f4f4; /* light gray background */
+    font-family: Arial, sans-serif; /* using Arial or sans-serif fonts */
+    margin: 20px; /* 20px margin around the body */     
+    color: #333; /* dark gray text color*/
+}
+ h1 { color: red; }
+ h2 { color: orange; }
+ h3 { color: yellowgreen; }
+ h4 { color: green; }
+ h5 { color: blue; }
+ h6 { color: purple; }
+ 
+ /* Style for all paragraphs */
+ p { color: #555; font-family: Arial, sans-serif; }

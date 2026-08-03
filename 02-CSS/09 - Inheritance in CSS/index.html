@@ -1,12 +1,51 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inheritance in CSS</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>CSS Inheritance Practice Example</title>
+  <style>
+    /* Define parent element styles */
+    .parent {
+      color: darkblue;               /* Text color to be inherited */
+      font-family: 'Arial', sans-serif; /* Font family to be inherited */
+      margin: 20px;                  /* Margin is NOT inherited by default */
+      border: 2px solid green;
+      /* You could add other inherited properties if desired */
+    }
+    
+    /* Class to override inherited properties for demonstration */
+    .override {
+      color: red;                    /* This will override parent's color */
+    }
+  </style>
 </head>
 <body>
-    <h1>Inheritance in CSS</h1>
+  <!-- Parent Element -->
+  <div class="parent">
+    <!-- Child Elements: They inherit color and font-family from .parent -->
+    <h2>This is an H2 element inside the parent</h2>
+
+    <!-- Note that the border is not inherited by default so we can force the inheritance , see below 
+      the border properties will be froced to be inherited from the div. 
+    -->
+    <p style="border:inherit;">This paragraph should inherit the dark blue color and Arial font from the parent.
+        and also forced to inherit the border style from the parent as well.
+    </p>
+
+    <span>This span also inherits the parent's color and font-family.</span>
+    
+    <!-- Child Element with Override: This one forces its own color -->
+    <p class="override">
+      This paragraph overrides the inherited color and displays red text.
+    </p>
+  </div>
+  
+  <!-- Documentation of Observations:
+       1. The <h2>, <p>, and <span> elements inside the parent div automatically inherit the parent's 
+          "color" (dark blue) and "font-family" (Arial). 
+       2. The "margin" property on the parent is not inherited by its child elements.
+       3. The second paragraph with class "override" displays red text because its "color" property is 
+          explicitly set to red, overriding the inherited dark blue color.
+  -->
 </body>
 </html>
