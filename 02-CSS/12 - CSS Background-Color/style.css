@@ -1,0 +1,110 @@
+body {
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+}
+
+header {
+  height: 160px;
+  width: 100%;
+  background-color: rgb(117, 235, 117);
+  text-align: center;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+  background-color: #2196f3;
+  /* Blue background for headings */
+  color: white;
+  /* White text */
+  padding: 10px;
+}
+
+.sectionOne {
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #ddd;
+  margin: 20px 0;
+}
+.sectionOne p {
+  background-color: rgb(67, 49, 49);
+  color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+span {
+  background-color: rgb(225, 89, 89);
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.sectionTwo {
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #ddd;
+  margin: 20px 0;
+}
+
+ul {
+  background-color: rgb(255, 255, 255);
+  unicode-bidi: isolate;
+}
+li {
+  display: list-item;
+  unicode-bidi: isolate;
+}
+
+ul li:nth-child(odd) {
+  background-color: #e0f7fa; /* Light cyan for odd items */
+  padding: 5px;
+}
+
+ul li:nth-child(even) {
+  background-color: #b2ebf2; /* Slightly darker cyan for even items */
+  padding: 5px;
+}
+
+
+
+table {
+    
+    width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+}
+th {
+   background-color: #9C27B0; /* Purple background for table headers */
+      color: white;
+      padding: 10px;
+      border: 1px solid #CCC;
+}
+ td {
+      background-color: #F3E5F5; /* Light purple background for table cells */
+      padding: 10px;
+      border: 1px solid #CCC;
+}
+input, textarea {
+      background-color: #FFF; /* White background */
+      padding: 8px;
+      border: 1px solid #AAA;
+      margin-bottom: 10px;
+   }
+
+button {
+      background-color: #FF5722; /* Orange background for buttons */
+      color: white;
+      cursor: pointer;
+}
+
+a {
+      background-color: #03A9F4; /* Light blue background */
+      color: white;
+      padding: 5px;
+      text-decoration: none;
+}
+p::first-line {
+      background-color: #C8E6C9; /* Light green background on the first line */
+}
