@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unit Showcase: A Journey Through CSS Units</title>
+  <style>
+    /* Global Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    section {
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      max-width: 90%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+
+    /* 1. Pixels */
+    .pixels {
+      padding: 20px;        /* 20px padding */
+      border: 2px solid #2196F3; /* 2px border */
+    }
+
+    /* 2. Inches & Centimeters */
+    .inches-cm {
+      width: 4in;           /* 4 inches wide */
+      padding: 1cm;         /* 1 cm padding */
+      border: 1px dashed #FF5722;
+      margin: 1rem auto;
+    }
+
+    /* 3. Percentages */
+    .percent {
+      width: 80%;           /* 80% of parent width */
+      margin: 0 auto;
+      padding: 2%;
+      background: #E8F5E9;
+      border: 1% solid #4CAF50;
+    }
+
+    /* 4. em (relative to parent font-size) */
+    .em-unit {
+      font-size: 1.25em;    /* 1.25 × inherited font-size */
+      padding: 1em;         /* 1 × inherited font-size */
+      background: #FFF3E0;
+      border: 0.1em solid #FB8C00;
+    }
+
+    /* 5. rem (relative to root font-size) */
+    html { font-size: 16px; }
+    .rem-unit {
+      font-size: 1.5rem;    /* 1.5 × 16px = 24px */
+      padding: 1rem;
+      background: #E3F2FD;
+      border: 0.25rem solid #1976D2;
+    }
+
+    /* 6. Viewport Units */
+    .viewport-hero {
+      width: 100vw;
+      height: 30vh;
+      background: #673AB7;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* 7. ch (character width) */
+    .ch-unit {
+      width: 40ch;          /* 40 characters wide */
+      padding: 1rem;
+      background: #FCE4EC;
+      border: 1px solid #D81B60;
+      margin: 0 auto;
+    }
+
+    /* 8. ex (x-height) */
+    .ex-unit {
+      font-size: 18px;
+      margin-top: 2ex;      /* 2 × x-height */
+      padding: 1ex;         /* 1 × x-height */
+      background: #EDE7F6;
+      border: 1px solid #5E35B1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unit Showcase: A Journey Through CSS Units</h1>
+    <p>Experience a short tale styled with different CSS units.</p>
+  </header>
+
+  <!-- Viewport Hero -->
+  <div class="viewport-hero">
+    The Land of Units Awaits
+  </div>
+
+  <!-- Pixels Section -->
+  <section class="pixels">
+    <h2>1. Pixels (px)</h2>
+    <p>
+      Once upon a time, in a pixel-perfect kingdom, the heroes measured every step in <strong>pixels</strong>.  
+      Sir Pixel strides <em>20px</em> at a time, ensuring precision in every corner of the land.
+    </p>
+  </section>
+
+  <!-- Inches & Centimeters Section -->
+  <section class="inches-cm">
+    <h2>2. Inches & Centimeters (in, cm)</h2>
+    <p>
+      In the Queen’s royal garden, paths were laid out in <strong>inches</strong> and <strong>centimeters</strong>.  
+      Each rose bed spanned exactly <em>4in wide</em>, with regal <em>1 cm</em> borders of marble.
+    </p>
+  </section>
+
+  <!-- Percentages Section -->
+  <section class="percent">
+    <h2>3. Percentages (%)</h2>
+    <p>
+      The castle walls filled <strong>80%</strong> of the great courtyard, leaving <em>2%</em> padding to roam freely.  
+      Such fluid design ensured the courtyard looked grand on every screen size.
+    </p>
+  </section>
+
+  <!-- EM Section -->
+  <section class="em-unit">
+    <h2>4. em – Relative to Parent</h2>
+    <p>
+      Lady Emila’s scrolls used the <strong>em</strong> unit. She set her headings to <em>1.25em</em> and margins to <em>1em</em>,  
+      so when the scribe adjusted the base text size, everything scaled harmoniously.
+    </p>
+  </section>
+
+  <!-- REM Section -->
+  <section class="rem-unit">
+    <h2>5. rem – Relative to Root</h2>
+    <p>
+      The Grand Library preferred <strong>rem</strong> units: text at <em>1.5rem</em> for clear reading,  
+      and padding of <em>1rem</em> around each tome. Regardless of nesting, all margins stayed consistent.
+    </p>
+  </section>
+
+  <!-- ch Section -->
+  <section class="ch-unit">
+    <h2>6. ch – Character Width</h2>
+    <p>
+      In the Scriptorium, each input box was exactly <strong>40ch</strong> wide, fitting forty “0” characters  
+      for scribing spells without overflow.
+    </p>
+  </section>
+
+  <!-- ex Section -->
+  <section class="ex-unit">
+    <h2>7. ex – x-Height</h2>
+    <p>
+      The Typography Tower measured vertical spacing in <strong>ex</strong>. A top margin of <em>2ex</em> and padding of <em>1ex</em>  
+      matched the height of the letter “x,” making text feel organically spaced.
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Unit Showcase. Resize your window or inspect with DevTools to see the magic of CSS units!  
+  </footer>
+</body>
+</html>
