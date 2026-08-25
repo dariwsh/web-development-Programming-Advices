@@ -1,12 +1,60 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Outline</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>CSS Outline</h1>
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .debug {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(118, 78, 27);
+        text-align: center;
+        margin: 70px;
+        padding: 10px 10px;
+        outline: 3px solid red;
+        outline-offset: 3px;
+      }
+      .Link {
+        padding: auto;
+        margin: 20px;
+        background-color: grey;
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        padding: 20px;
+      }
+      .Link a:focus {
+        outline: 3px dashed rgb(5, 68, 47);
+        outline-offset: 20px;
+      }
+      .card {
+        width: 200px;
+        height: 150px;
+        background-color: lightgray;
+        margin: 20px;
+        padding: 10px;
+        transition: outline 0.3s ease;
+      }
+      .card:hover {
+        outline: 4px solid orange; /* خط برتقالي */
+        outline-offset: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="debug">
+      <p>
+        Debug Layout: Wrap an element in and apply a bright outline to visualize
+        its box.
+      </p>
+    </div>
+    <div class="Link">
+      <a href="https://www.youtube.com/watch?v=8d9Sv3pZ8qI">Quran </a>
+    </div>
+    <div class="card">
+      <p>Hover me to see highlight!</p>
+    </div>
+  </body>
 </html>
