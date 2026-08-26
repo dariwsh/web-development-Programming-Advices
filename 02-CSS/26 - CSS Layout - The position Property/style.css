@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  padding: 1rem;
+}
+h1 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+header{
+    position:sticky;
+    top:0;
+}
+.static {
+  position: static;
+  background: #f0f0f0;
+  padding: 0.5rem;
+}
+
+.relative {
+  position: relative;
+  top: 30px;
+  left: 30px;
+  background-color: antiquewhite;
+  padding: 0.5rem;
+}
+
+.parent {
+  position: relative; /* parent for absolute child */
+  height: 150px;
+  background: #ffe0e0;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.absolute {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background: hsl(0, 81%, 42%);
+  padding: 0.5rem;
+}
+
+/* .fixed {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #d0ffd0;
+  padding: 0.5rem;
+  border: 1px solid #090;
+} */
+
+.sticky {
+  position: sticky; /* toggles between relative & fixed */
+  top: 0; /* sticks at top of viewport */
+  background: #fff0d0;
+  padding: 0.5rem;
+  border-bottom: 1px solid #cc0;
+}
+
+.filler {
+  height: 800px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05));
+}
