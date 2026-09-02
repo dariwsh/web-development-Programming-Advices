@@ -1,0 +1,413 @@
+
+    /* ===================================================================
+       🎨 THEME TOKENS (light by default)
+       Centralized “design tokens” so colors/spacing change app-wide.
+       Tip: override any of these in a different theme/scope if needed.
+    =================================================================== */
+    :root {
+      /* ---- Palette -------------------------------------------------- */
+      --bg:       #f7f7fb;          /* Page background (paper-like) */
+      --ink:      #0f172a;          /* Primary text color */
+      --muted:    #6b7280;          /* Secondary/quiet text */
+      --card:     #ffffff;          /* Surfaces (cards/sections) */
+      --line:     #e5e7eb;          /* Hairline borders/dividers */
+      --accent:   #b0d2ae;          /* Accent A (red) for highlights */
+      --accent-2: #3b82f6;          /* Accent B (blue) for highlights */
+
+      /* ---- Shape & elevation ---------------------------------------- */
+      --radius:   18px;             /* Global corner rounding for cards */
+      --shadow:   0 10px 28px rgba(2, 6, 23, .08); /* Soft card shadow */
+
+      /* ---- Spacing scale (vertical rhythm) -------------------------- */
+      --space-1:  6px;              /* XS spacing */
+      --space-2:  10px;             /* S  spacing */
+      --space-3:  14px;             /* M  spacing */
+      --space-4:  20px;             /* L  spacing */
+      --space-5:  28px;             /* XL spacing */
+      --space-6:  40px;             /* XXL spacing */
+
+      /* ---- Layout caps ---------------------------------------------- */
+      --frame:    1180px;           /* Max page width (readability) */
+      --rail-w:   120px;            /* Left rail width (years/links) */
+    }
+
+    /* Auto dark theme (follows OS setting). No manual toggle here. */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:    #0b1220;  /* Dark canvas */
+        --ink:   #e5e7eb;  /* Light text on dark */
+        --muted: #9aa3b2;  /* Softer light text */
+        --card:  #0f172a;  /* Dark surface */
+        --line:  #1f2a44;  /* Dark-mode divider */
+        --shadow: none;    /* Avoid heavy glow on dark */
+      }
+    }
+
+    /* ===================================================================
+       🧱 BASE
+       Normalize: sizing, smooth anchor jumps, typography, links, media.
+    =================================================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;       /* Include borders in element width/height */
+    }
+
+    html {
+      scroll-behavior: smooth;      /* Smooth jumps to #anchors */
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;               /* Remove inline gaps */
+    }
+
+    a {
+      color: var(--accent-2);       /* Use blue accent for links */
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;   /* Clear affordance on hover */
+    }
+
+    .muted {
+      color: var(--muted);          /* Utility: softer text */
+    }
+
+    /* ===================================================================
+       📰 PAGE FRAME (Grid: rail | content)
+       Shell (.wrap) centers page; .frame makes two columns.
+    =================================================================== */
+    .wrap {
+      max-width: var(--frame);      /* Respect readable line length */
+      margin: 40px auto;            /* Center and add breathing room */
+      padding: 0 var(--space-4);    /* Side gutters on small screens */
+    }
+
+    .frame {
+      display: grid;
+      grid-template-columns: var(--rail-w) 1fr; /* Left rail | Main column */
+      gap: var(--space-5);                      /* Column gutter */
+      align-items: start;                       /* Avoid stretching rail */
+    }
+
+    @media (max-width: 900px) {
+      .frame {
+        grid-template-columns: 1fr; /* Stack rail above content on mobile */
+      }
+    }
+
+    /* ===================================================================
+       🧭 LEFT RAIL (years + quick links)
+       Holds year jump-links and section shortcuts.
+    =================================================================== */
+    .rail {
+      position: staic;              /* NOTE: likely 'static'; kept as provided */
+      height: fit-content;          /* Shrink-wrap to its content */
+    }
+
+    .rail .year {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: .8px;
+      margin: 0 0 10px;
+    }
+
+    .rail .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);    /* Red dot marker */
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .rail .years {
+      border-left: 2px solid var(--line); /* Timeline spine */
+      padding-left: 14px;                 /* Space away from spine */
+      display: grid;
+      gap: 10px;
+    }
+
+    .rail a {
+      color: inherit;               /* Use current text color */
+    }
+
+    .rail .links {
+      margin-top: var(--space-5);   /* Separate from years block */
+      display: grid;
+      gap: 8px;
+    }
+
+    .rail .links a {
+      font-size: 14px;              /* Compact nav text */
+    }
+
+    /* Clickable year chips; hover gets subtle border for affordance */
+    .rail a.year-link {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;         /* Pill shape */
+      border: 1px solid transparent;
+      transition: border-color .2s, background-color .2s;
+    }
+
+    .rail a.year-link:hover {
+      border-color: var(--line);
+    }
+
+    /* CSS-only “active” year: if #y20XX is targeted, style its link */
+    .frame:has(#y2025:target) .rail a[href="#y2025"],
+    .frame:has(#y2024:target) .rail a[href="#y2024"],
+    .frame:has(#y2023:target) .rail a[href="#y2023"],
+    .frame:has(#y2022:target) .rail a[href="#y2022"] {
+      background: color-mix(in srgb, var(--accent-2) 12%, transparent); /* Soft blue wash */
+      border-color: var(--accent-2);                                     /* Blue outline */
+    }
+
+    /* ===================================================================
+       🧷 MASTHEAD (magazine header)
+       Decorative gradient wash + avatar + title + contact chips.
+    =================================================================== */
+    .masthead {
+      background: linear-gradient(135deg,
+          color-mix(in srgb, var(--accent) 10%, #0000),
+          color-mix(in srgb, var(--accent-2) 10%, #0000)), var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;             /* Clip child corners to radius */
+    }
+
+    .mast {
+      display: grid;
+      grid-template-columns: 140px 1fr; /* Avatar | Details */
+      gap: var(--space-4);
+      padding: var(--space-5);
+      align-items: center;
+     
+    }
+
+    @media (max-width: 720px) {
+      .mast {
+        grid-template-columns: 1fr;     /* Stack on narrow screens */
+        text-align: center;
+        justify-items: center;
+      }
+    }
+
+    .avatar {
+      width: 140px;
+      aspect-ratio: 1/1.5;                /* Perfect square */
+      border-radius: 19px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .10);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;                /* Fill without distortion */
+      object-position: center;
+    }
+    .avatar img:hover {
+      transform: scale(1.05);           /* Slight zoom on hover */
+      transition: transform .3s;
+    
+    }
+
+    @media (max-width: 720px) {
+      .avatar {
+        margin: 0 auto var(--space-4);  /* Add spacing below on mobile */
+       
+      }
+    }
+
+    .title {
+      border-left: 4px solid var(--accent); /* Red accent bar */
+      padding-left: var(--space-4);
+    }
+
+    @media (max-width: 720px) {
+      .title {
+        border-left: 0;                   /* Remove bar when centered */
+        padding-left: 0;
+      }
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 48px); /* Fluid type between 32–48px */
+      line-height: 1.1;
+    }
+
+    .title p {
+      margin: 8px 0 0;
+      font-size: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;                   /* Wrap chips onto new lines */
+      gap: 10px 16px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .meta {
+        justify-content: center;         /* Center chips on mobile */
+      }
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;              /* Pill chip */
+      background: var(--card);
+    }
+
+    /* ===================================================================
+       📌 SECTION CARDS
+       Shared card look for About, Experience, Skills, Projects, Education.
+    =================================================================== */
+    .section {
+      margin-top: var(--space-5);        /* Space between sections */
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: var(--space-5);
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      text-transform: uppercase;         /* Magazine-ish section titles */
+      letter-spacing: .4px;
+      color: var(--muted);
+    }
+
+    /* === EXPERIENCE =================================================== */
+    .exp {
+      display: grid;
+      grid-template-columns: 1fr;        /* Single column list */
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 880px) {
+      .exp {
+        grid-template-columns: 1fr;      /* (Reserved for future split) */
+      }
+    }
+
+    .job {
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--line); /* Newspaper divider */
+      scroll-margin-top: 90px;               /* Offset when jumping via rail */
+    }
+
+    .job:last-child {
+      border-bottom: 0;
+    }
+
+    .role {
+      font-weight: 800;                  /* Emphasize job title */
+    }
+
+    .where {
+      color: var(--muted);               /* Company/place */
+    }
+
+    .when {
+      margin-left: auto;                 /* Push to far edge in flex rows */
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* === ABOUT: lead paragraph ====================================== */
+    .lead {
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--muted);
+      border-left: 4px solid var(--accent-2); /* Blue rule for emphasis */
+      padding-left: 14px;
+    }
+
+    /* === SKILLS: chip list ========================================== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* === PROJECTS: column-flow layout =============================== */
+    .projects {
+      column-count: 2;                    /* Newspaper two-column feel */
+      column-gap: var(--space-4);
+    }
+
+    @media (max-width: 880px) {
+      .projects {
+        column-count: 1;                  /* Single column on small screens */
+      }
+    }
+
+    .proj {
+      break-inside: avoid;                /* Keep a project card intact */
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      margin: 0 0 var(--space-4);
+      background: var(--card);
+    }
+
+    .proj h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      color: var(--muted);
+    }
+
+    /* ===================================================================
+       📱 MOBILE : Hide rail to keep things simple
+       (Content remains fully navigable via section anchors.)
+    =================================================================== */
+    @media (max-width: 900px) {
+      .rail {
+        display: none;
+      }
+    }
+
+    /* ===================================================================
+       🖨️ PRINT
+       Remove shadows; keep colors legible on white paper.
+    =================================================================== */
+    @media print {
+      .wrap {
+        margin: 0;                        /* Use full page width */
+      }
+
+      .masthead,
+      .card {
+        box-shadow: none;                 /* Ink-friendly */
+      }
+
+      a {
+        color: #000;                      /* Avoid colored inks for links */
+        text-decoration: none;
+      }
+    }

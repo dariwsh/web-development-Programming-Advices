@@ -1,0 +1,189 @@
+
+
+    /* ──────────────── Code Overview ────────────────
+       🎯 Purpose: Display 3 stories in a 2‑column magazine layout (image left, text right).
+       🏗️ Layout: Flexbox rows for cards; native <dialog> for full stories.
+       🎨 Theming: Clean magazine feel; serif titles; subtle shadows.
+       ♿ A11y: Alt text, aria-labelledby on dialogs, clear close button.
+       🖨️ Print: Only the OPEN dialog prints; page flattened; scrollbars removed.
+    ─────────────────────────────────────────────── */
+
+    :root {
+      --bg: #faf9f6;
+      --text: #222222;
+      --accent: #c53030;
+      --card-bg: #ffffff;
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(0,0,0,0.12);
+      --maxw: 980px;
+    }
+
+    /* Auto-dark theme */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161616;
+        --text: #f3f3f3;
+        --accent: #f87171;
+        --card-bg: #222;
+        --shadow: 0 10px 24px rgba(0,0,0,0.35);
+      }
+    }
+
+    body {
+      font-family: "Georgia", serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.75rem 1rem;
+      background: var(--accent);
+      color: #fff;
+    }
+    header h1 { margin: 0 0 .25rem 0; }
+    header p { margin: 0; opacity: .95; }
+
+    main {
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 2rem 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ================= Story Card ================= */
+    .story-card {
+      display: flex;
+      gap: 1.5rem;
+      align-items: stretch;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .story-card:hover { transform: translatey(6px); }
+
+    .story-thumb {
+      width: 40%;
+      min-height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-content {
+      padding: 1.25rem 1.25rem 1.25rem 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .story-title {
+      margin: 0 0 .4rem 0;
+      font-size: 1.5rem;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .story-excerpt { margin: 0 0 .85rem 0; }
+
+    .read-more {
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration:none;
+      border-bottom: 2px solid transparent;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .read-more:hover { 
+      text-decoration:underline;
+      transform: translateY(-4px) translateX(-4px);
+      
+    
+    }
+
+    /* ================= Dialog ================= */
+    dialog {
+      width: 90%;
+      max-width: 720px;
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 2rem;
+      position: relative;
+      text-align: left;
+    }
+    dialog::backdrop { background: rgba(0,0,0,0.5); }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--accent);
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+
+    dialog img {
+      width: 420px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: var(--radius);
+    }
+    dialog h2 { margin: .25rem 0 .75rem; line-height: 1.28; }
+    dialog p { margin: 0 0 1rem; }
+
+    /* ================= Print Mode: only OPEN dialog prints ================= */
+    @media print {
+      @page { margin: 16mm; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      html, body { height: auto !important; overflow: visible !important; }
+
+      /* Show only the currently open dialog */
+      body:has(dialog[open]) > :not(dialog[open]) { display: none !important; }
+      dialog:not([open]) { display: none !important; }
+
+      /* Flatten the open dialog */
+      dialog[open]{
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        transform: none !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        background: var(--card-bg) !important;
+      }
+      dialog[open]::backdrop { display: none !important; }
+
+      .close-btn, .read-more, nav { display: none !important; }
+
+      h1, h2, img { break-inside: avoid; page-break-inside: avoid; }
+      p, li { orphans: 3; widows: 3; }
+
+      /* Hide printed scrollbars in some UAs */
+      * { scrollbar-width: none !important; }
+      *::-webkit-scrollbar { display: none !important; }
+    }
+
+    /* Basic responsiveness for small screens */
+    @media (max-width: 720px) {
+      .story-card { flex-direction: column; }
+      .story-thumb { width: 100%; height: 220px; }
+      .story-content { padding: 1rem 1.25rem 1.25rem; }
+    }
+ 

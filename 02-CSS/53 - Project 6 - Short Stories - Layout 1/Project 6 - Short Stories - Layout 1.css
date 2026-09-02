@@ -1,0 +1,244 @@
+
+    /* ──────────────── Code Overview ────────────────
+       🎯 Purpose: Present short stories as elegant cards with image, teaser, and a full-story modal.
+       🏗️ Layout: Centered grid of “story-card” items; each opens a native <dialog> with the full text.
+       🎨 Theming: CSS variables (light by default) + automatic dark mode via prefers-color-scheme.
+       🧭 Components:
+           • .story-card      → Card shell (image, title, excerpt, “Read More” link)
+           • dialog           → Native modal for full story (image + rich text)
+           • .close-btn       → Inside dialog to close it
+       ⚡ Interactivity: Minimal inline JS on links/buttons to open/close dialogs (showModal()/close()).
+       ♿ Accessibility: Descriptive alt text; dialogs labeled via aria-labelledby; large tap targets.
+       🖨️ Print: Dialog content becomes inline for clean paper/PDF export; decorative UI hidden.
+       ─────────────────────────────────────────────── */
+
+    /* ================================================================
+       🎨 THEME TOKENS (light by default)
+       Describe each variable so students learn how to theme quickly.
+    ================================================================ */
+    :root {
+      --bg: #fdfaf6;                 /* Page background */
+      --text: #2b2b2b;               /* Primary text color */
+      --accent: #235347;             /* Brand/accent (buttons, headings, links) */
+      --card-bg: #ffffff;            /* Card & dialog surface color */
+      --radius: 14px;                /* Global corner rounding */
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft elevation */
+      --maxw: 1000px;                /* Content max width for readable lines */
+    }
+
+    /* Auto-dark theme (no manual toggle) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;               /* Dark page background */
+        --text: #f5f5f5;             /* Light text on dark bg */
+        --accent: #8EB69B;           /* Warmer accent in dark mode */
+        --card-bg: #262626;          /* Dark surface */
+        --nav-bg:#051F20;
+    }
+    }
+
+    /* ================================================================
+       🧱 BASE ELEMENTS
+    ================================================================ */
+    body {
+      font-family: 'Georgia', serif; /* Literary feel */
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ================= Header (title + inline nav) ================= */
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--accent);
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    /* The nav links open dialogs via inline JS (showModal) */
+    nav {
+      margin-top: 1rem;
+      
+    }
+
+    nav a {
+      color: rgb(255, 255, 255);
+      margin: 0 0.5rem;
+
+      text-decoration: none; /* distinguish as links on solid bg */
+    }
+
+       nav a:hover {
+      color:var(--nav-bg) ;
+      margin: 0 0.5rem;
+
+    }
+
+    /* ===================== Main grid (cards) ======================= */
+    main {
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 2rem 1rem;
+      display: grid;
+      gap: 2rem; /* uniform spacing between cards */
+    }
+
+    /* ======================= Story Card UI ========================= */
+    .story-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden; /* clip rounded corners for image */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* subtle hover lift */
+      text-align: center;
+    }
+    .story-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .story-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover; /* ensure neat crop */
+      display: block;
+    }
+
+    .story-content {
+      padding: 1.5rem;
+    }
+
+    .story-title {
+      font-size: 1.5rem;
+      margin-top: 0.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .story-excerpt {
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+      border-bottom: 2px solid transparent; /* animated underline on hover */
+      transition: border-color 0.3s;
+    }
+    .read-more:hover {
+      border-color: var(--accent);
+    }
+
+    /* ================================================================
+       🪟 Dialogs: native <dialog> with custom look
+       - Opened with showModal() (links above)
+       - Closed with .close-btn (button inside)
+    ================================================================ */
+    dialog {
+      width: 90%;
+      max-width: 700px;
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 2rem;
+      text-align: left;        /* keep story prose rag-left */
+      position: relative;      /* anchor absolute close button */
+    }
+
+    /* Large cover image for the story */
+    dialog img {
+      width: 400px;            /* preferred width on wide screens */
+      max-width: 100%;         /* responsive fallback */
+      height: auto;            /* keep aspect */
+      display: block;
+      margin: 0 auto 1rem;     /* center image, add bottom space */
+      border-radius: var(--radius);
+    }
+
+    dialog h2 {
+      margin: 0.25rem 0 0.75rem; /* compact, readable spacing */
+      line-height: 1.3;
+    }
+
+    dialog p {
+      margin: 0 0 1rem;        /* consistent rhythm for paragraphs */
+    }
+
+    /* Dimmed page background when dialog is open */
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Close “X” button in the top-right corner of the dialog */
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--accent);
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+
+  /* ──────────────── Code Overview ────────────────
+   🎯 Purpose: When a dialog is OPEN, print ONLY that dialog (no others, no page).
+   🏗️ Approach: Use :has(dialog[open]) to hide all siblings; flatten the open dialog.
+   🧩 Extras: Remove scrollbars/clipping; hide interactive UI; nicer pagination.
+   ⚠️ Note: Requires modern :has() support (Chromium 105+, Safari 15.4+, Firefox 121+).
+   ─────────────────────────────────────────────── */
+
+  @media print {
+    @page { margin: 16mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    html, body { height: auto !important; overflow: visible !important; }
+
+    /* Print only the OPEN dialog: hide everything else on the page */
+    body:has(dialog[open]) > :not(dialog[open]) { display: none !important; }
+
+    /* If multiple dialogs exist, hide any that aren't open */
+    dialog:not([open]) { display: none !important; }
+
+    /* Flatten the OPEN dialog for print (no scrollbars/clipping) */
+    dialog[open] {
+      display: block !important;
+      position: static !important;
+      inset: auto !important;
+      transform: none !important;
+      width: auto !important;
+      max-width: none !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      background: var(--card-bg) !important;
+    }
+    dialog[open]::backdrop { display: none !important; }
+
+    /* Hide interactive-only UI in print */
+    .close-btn,
+    .read-more,
+    nav { display: none !important; }
+
+    /* Nicer pagination */
+    h1, h2, img { break-inside: avoid; page-break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+
+    /* Avoid image cropping in print */
+    .story-thumb { height: auto !important; }
+
+    /* Hide printed scrollbars (where applicable) */
+    * { scrollbar-width: none !important; }
+    *::-webkit-scrollbar { display: none !important; }
+  }
+

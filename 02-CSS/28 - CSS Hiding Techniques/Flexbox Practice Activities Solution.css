@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+  line-height: 1.5;
+}
+section {
+  margin-bottom: 2rem;
+}
+h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* 1) Menu Toggler */
+#nav-list li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+#toggle-menu {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+/* 2) Form Stepper */
+.step {
+  display: none;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+}
+.step button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}

@@ -1,0 +1,289 @@
+<!-- /* ──────────────── Code Overview ────────────────
+   🎯 Purpose: Magazine-style, print-friendly CV with a two-column “newspaper” layout (no JS).
+   🏗️ Layout:
+       • .wrap centers content (max-width var(--frame)).
+       • .frame grid = left rail var(--rail-w) | 1fr main column.
+       • Masthead card + section cards (About, Experience, Skills, Projects, Education).
+       • Projects use CSS columns; rail links highlight active year via :has(:target).
+   📐 Use Cases: Resumes/portfolios, single-page profiles, clean PDF exports.
+   🔗 Key Properties / Techniques:
+       • Design tokens in :root (colors, spacing, radius, shadow) → easy theming.
+       • Auto dark mode via @media (prefers-color-scheme: dark).
+       • :has(#yYYYY:target) → CSS-only active state in the year rail.
+       • column-count + break-inside: avoid → masonry-like project list.
+       • scroll-margin-top → nicer anchor jumps for year sections.
+       • Responsive: rail hides ≤900px; fluid type with clamp(); print removes shadows.
+   ─────────────────────────────────────────────── */ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Magazine CV – Two-Column Newspaper Layout</title>
+    <link rel="stylesheet" href="Project 5 - CV - Layout 5 (Dev-Tools).css" />
+  </head>
+
+  <body>
+    <main class="wrap">
+      <!-- ============================================================
+         HEADER / MASTHEAD
+         Avatar + Name/Role + contact/location/social chips.
+    ============================================================= -->
+      <header class="masthead">
+        <div class="mast">
+          <div class="avatar">
+            <img
+              src="images/MyImage.jpg"
+              alt="Ahmed Darwish portrait"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <div class="title">
+              <h1>Ahmed Darwish</h1>
+              <p>IT Student • Junior Developer</p>
+            </div>
+            <div class="meta">
+              <span class="tag">Alexandria, Egypt</span>
+              <span class="tag">dariwshpro@gmail.com</span>
+              <span class="tag">+20 015 50225603</span>
+              <a class="tag" href="https://github.com/dariwsh" target="_blank" rel="noopener">GitHub</a>
+              <a class="tag" href="https://www.linkedin.com/in/ahmed-darwish-33b752330/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="frame">
+        <!-- ============================================================
+           LEFT RAIL (click a year to jump to that experience section)
+           Uses :has(:target) to style the active year chip.
+      ============================================================= -->
+        <aside class="rail" aria-label="Year rail + links">
+          <div class="years">
+            <p class="year">
+              <span class="dot"></span
+              ><a class="year-link" href="#y2025">2025</a>
+            </p>
+            <p class="year">
+              <span class="dot"></span
+              ><a class="year-link" href="#y2024">2024</a>
+            </p>
+            <p class="year">
+              <span class="dot"></span
+              ><a class="year-link" href="#y2023">2023</a>
+            </p>
+          </div>
+          <div class="links" aria-label="Quick links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+          </div>
+        </aside>
+
+        <!-- ============================================================
+           CONTENT COLUMN
+           About, Experience, Skills, Projects, Education.
+      ============================================================= -->
+        <section aria-label="Content column">
+          <!-- ABOUT -->
+          <article
+            id="about"
+            class="section card"
+            aria-labelledby="about-title"
+          >
+            <h2 id="about-title">About</h2>
+            <p class="lead">
+              I'm <strong>Ahmed Mohamed Mostafa Darwish</strong>, an IT Student at <strong>Borg El Arab Technological University</strong> with a strong foundation in programming, algorithms, and web development. Skilled in C, C++, Python, Java, SQL, HTML5, CSS3, and JavaScript. Seeking an internship to gain practical industry experience and grow.
+            </p>
+          </article>
+
+          <!-- EXPERIENCE
+             Each year block has an id (#y2025, #y2024…) so the rail can link to it. -->
+          <article class="section card" aria-labelledby="exp-title">
+            <h2 id="exp-title">Experience & Training</h2>
+
+            <div class="exp">
+              <!-- 2025 -->
+              <div class="job" id="y2025" aria-labelledby="y2025-title">
+                <div
+                  style="
+                    display: flex;
+                    gap: 12px;
+                    align-items: baseline;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <div class="role" id="y2025-title">
+                    Web Development Trainee
+                  </div>
+                  <div class="where">Sprints (Microsoft) • Remote</div>
+                  <div class="when">2025</div>
+                </div>
+                <ul class="muted">
+                  <li>
+                    Built responsive frontend web applications using HTML5, CSS3, and JavaScript.
+                  </li>
+                  <li>
+                    Practiced clean code architecture, modern layouts, and real-world project delivery.
+                  </li>
+                </ul>
+                <p><a href="#about">↑ Back to top</a></p>
+              </div>
+
+              <!-- 2024 -->
+              <div class="job" id="y2024" aria-labelledby="y2024-title">
+                <div
+                  style="
+                    display: flex;
+                    gap: 12px;
+                    align-items: baseline;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <div class="role" id="y2024-title">
+                    Independent Developer
+                  </div>
+                  <div class="where">Self-Learning & Open Source</div>
+                  <div class="when">2024 — Present</div>
+                </div>
+                <ul class="muted">
+                  <li>
+                    Mastered programming foundations, OOP, algorithms, and data structures in C++ & Java.
+                  </li>
+                  <li>
+                    Completed 24+ course certificates with Dr. Mohamed Abu Hadhoud.
+                  </li>
+                </ul>
+                <p><a href="#about">↑ Back to top</a></p>
+              </div>
+
+              <!-- 2023 -->
+              <div class="job" id="y2023" aria-labelledby="y2023-title">
+                <div
+                  style="
+                    display: flex;
+                    gap: 12px;
+                    align-items: baseline;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <div class="role" id="y2023-title">IT Student</div>
+                  <div class="where">Borg El Arab Technological University</div>
+                  <div class="when">2023 — 2028</div>
+                </div>
+                <ul class="muted">
+                  <li>
+                    Commenced Bachelor of IT curriculum focusing on programming, networking, and system fundamentals.
+                  </li>
+                </ul>
+                <p><a href="#about">↑ Back to top</a></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- SKILLS -->
+          <article
+            id="skills"
+            class="section card"
+            aria-labelledby="skills-title"
+          >
+            <h2 id="skills-title">Skills & Technologies</h2>
+            <div class="skills">
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL & DB</span>
+              <span class="tag">Git & GitHub</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">IntelliJ IDEA</span>
+              <span class="tag">CLion</span>
+            </div>
+          </article>
+
+          <!-- PROJECTS -->
+          <article
+            id="projects"
+            class="section card"
+            aria-labelledby="proj-title"
+          >
+            <h2 id="proj-title">Selected Projects</h2>
+            <div class="projects">
+              <div class="proj">
+                <h3>Smart Floor Tile System</h3>
+                <p class="muted">
+                  Smart floor tile generates energy from pressure with mobile notifications.
+                </p>
+              </div>
+              <div class="proj">
+                <h3>E-Commerce Website</h3>
+                <p class="muted">
+                  Multi-page responsive e-commerce platform with cart and blog features.
+                </p>
+              </div>
+              <div class="proj">
+                <h3>CRUDIE & IT_TOP</h3>
+                <p class="muted">
+                  CRUD operations web application and responsive frontend showcase.
+                </p>
+              </div>
+              <div class="proj">
+                <h3>Programming Foundations</h3>
+                <p class="muted">
+                  Complete C++ repository covering algorithms, data structures, and OOP.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- EDUCATION -->
+          <article id="education" class="section card">
+            <h2>Education & Certifications</h2>
+            <div class="edu-list">
+              <div class="edu-item">
+                <div class="edu-header">
+                  <h3 class="edu-degree">Bachelor of Information Technology (IT)</h3>
+                  <span class="edu-years">2023 — 2028</span>
+                </div>
+                <div class="edu-institution">Borg El Arab Technological University</div>
+                <p class="edu-highlights muted">
+                  Studying Information Technology with focus on Software Engineering, Database Systems, and Web Applications.
+                </p>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-header">
+                  <h3 class="edu-degree">Programming & Algorithms (24+ Certificates)</h3>
+                  <span class="edu-years">2024 — 2026</span>
+                </div>
+                <div class="edu-institution">Dr. Mohamed Abu Hadhoud</div>
+                <p class="edu-highlights muted">
+                  Mastered core algorithmic thinking, data structures, and object-oriented programming.
+                </p>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-header">
+                  <h3 class="edu-degree">
+                    Web Development & ICDL Base
+                  </h3>
+                  <span class="edu-years">2025 — 2026</span>
+                </div>
+                <div class="edu-institution">Sprints (Microsoft) & Edraak</div>
+                <p class="edu-highlights muted">
+                  Web Development Fundamentals by Sprints and Microsoft, and ICDL Base Certification.
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

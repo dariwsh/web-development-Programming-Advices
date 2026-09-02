@@ -1,0 +1,341 @@
+
+    /* ───────────────── Code Overview ─────────────────
+       🎯 Purpose: Present 3 stories along a vertical timeline "spine".
+       🏗️ Layout: Center spine with alternating left/right cards (stacks on mobile).
+       🎨 Style: Elegant, readable, soft shadows; auto dark mode; theme tokens.
+       ♿ A11y: Alt text, aria-labelledby on dialogs, large tap targets.
+       🖨️ Print: Only the OPEN dialog prints; flattened for clean pages.
+    ────────────────────────────────────────────────── */
+
+    :root {
+      --bg: #fbfbfa;
+      --text: #22262c;
+      --muted: #6b7280;
+      --accent: #0ea5e9;
+      /* cyan-500 */
+      --accent-ink: #ffffff;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius: 16px;
+      --shadow: 0 12px 28px rgba(0, 0, 0, .12);
+      --maxw: 1100px;
+      --spine-w: 4px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1014;
+        --text: #e7e9ee;
+        --muted: #9aa2b2;
+        --accent: #38bdf8;
+        /* brighter cyan */
+        --accent-ink: #0d1014;
+        --card-bg: #151a21;
+        --border: #222833;
+        --shadow: 0 18px 36px rgba(0, 0, 0, .55);
+      }
+    }
+
+    /* ===== Base ===== */
+    html,
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: "Georgia", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+    }
+
+    header {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 2rem 1rem 1rem;
+    }
+
+    .title {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .75rem;
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      letter-spacing: .2px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+
+    /* ===== Timeline ===== */
+    .timeline {
+      position: relative;
+      max-width: var(--maxw);
+      margin: 1rem auto 3rem;
+      padding: 0 1rem;
+    }
+
+    /* Spine */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: var(--spine-w);
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(14, 165, 233, .15), rgba(14, 165, 233, .6), rgba(14, 165, 233, .15));
+      border-radius: 999px;
+    }
+
+    .t-item {
+      position: relative;
+      min-height: 120px;
+      margin: 2.5rem 0;
+    }
+
+    /* Dot */
+    .t-item .dot {
+      position: absolute;
+      left: 50%;
+      top: .3rem;
+      width: 16px;
+      height: 16px;
+      transform: translate(-50%, 0);
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(14, 165, 233, .12);
+    }
+
+    .t-card {
+      width: calc(50% - 28px);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .t-card:hover {
+      transform: perspective(600px) rotateX(2deg) rotateY(-10deg) translateY(2px);
+
+    }
+
+    .place-left .t-card {
+       margin-right: auto; /*→ pushes the element as far left as possible within its container. */
+    }
+
+    .place-right .t-card {
+      margin-left: auto; /*→ pushes the element as far right as possible within its container. */
+    }
+
+    .t-inner {
+      display: flex;
+      gap: 1rem;
+      align-items: stretch;
+      padding: 1rem 1rem 1.15rem;
+    }
+
+    .thumb {
+      width: 36%;
+      min-height: 160px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .t-body {
+      flex: 1;
+    }
+
+    .t-body h2 {
+      margin: .2rem 0 .45rem;
+      font-size: 1.35rem;
+      line-height: 1.22;
+      color: var(--accent);
+    }
+
+    .excerpt {
+      margin: 0 0 .9rem;
+    }
+
+    .read-more {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 700;
+      padding: .5rem .85rem;
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(14, 165, 233, .35);
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+
+    .read-more:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(14, 165, 233, .45);
+      opacity: .97;
+    }
+
+    /* ===== Dialogs ===== */
+    dialog {
+      width: 92%;
+      max-width: 760px;
+      border: none;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 2rem;
+      position: relative;
+      text-align: left;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, .55);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    dialog img {
+      width: 460px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: 14px;
+    }
+
+    dialog h2 {
+      margin: .25rem 0 .8rem;
+      line-height: 1.25;
+    }
+
+    dialog p {
+      margin: 0 0 1rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .timeline::before {
+        left: 24px;
+        transform: none;
+      }
+
+      .t-item .dot {
+        left: 24px;
+        transform: none;
+      }
+
+      .t-card {
+        width: 100%;
+      }
+
+      .place-left .t-card,
+      .place-right .t-card {
+        margin: 0 0 0 48px;
+      }
+
+      .t-inner {
+        flex-direction: column;
+      }
+
+      .thumb {
+        width: 100%;
+        height: 220px;
+        border-radius: 12px;
+      }
+    }
+
+    /* ===== Print: Only OPEN dialog ===== */
+    @media print {
+      @page {
+        margin: 16mm;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      html,
+      body {
+        height: auto !important;
+        overflow: visible !important;
+      }
+
+      body:has(dialog[open])> :not(dialog[open]) {
+        display: none !important;
+      }
+
+      dialog:not([open]) {
+        display: none !important;
+      }
+
+      dialog[open] {
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        transform: none !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        background: var(--card-bg) !important;
+      }
+
+      dialog[open]::backdrop {
+        display: none !important;
+      }
+
+      .close-btn,
+      .read-more,
+      nav {
+        display: none !important;
+      }
+
+      h1,
+      h2,
+      img {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      p,
+      li {
+        orphans: 3;
+        widows: 3;
+      }
+
+      * {
+        scrollbar-width: none !important;
+      }
+
+      *::-webkit-scrollbar {
+        display: none !important;
+      }
+    }
