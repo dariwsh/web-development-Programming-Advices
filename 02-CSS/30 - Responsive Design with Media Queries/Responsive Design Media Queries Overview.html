@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Design with Media Queries</title>
+    <link rel="stylesheet" href="Responsive Design with Media Queries.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+        line-height: 1.5;
+      }
+      .Flex {
+        display: flex; /* turn on flexbox */
+        flex-direction: row; /* default: horizontal */
+        justify-content: space-between; /* spread items evenly */
+        flex-wrap: wrap; /* allow items to wrap */
+        text-align: center;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      p {
+       flex: 1 1 calc(25% - 1rem);
+      background: lightblue;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 4px;
+      }
+      /* Desktop */
+
+      /* أقل من 800px */
+      @media screen and (max-width: 800px) {
+        p {
+          flex: 1 1 calc(33% - 1rem);
+        }
+      }
+
+      /* أقل من 650px */
+      @media screen and (max-width: 650px) {
+        p {
+          flex: 1 1 calc(50% - 1rem);
+        }
+      }
+
+      /* أقل من 500px */
+      @media screen and (max-width: 500px) {
+        p {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Responsive Design with Media Queries</h1>
+    <section>
+      <div class="Flex">
+        <p>Box1</p>
+        <p>Box2</p>
+        <p>Box3</p>
+        <p>Box4</p>
+        <p>Box5</p>
+        <p>Box6</p>
+      </div>
+    </section>
+  </body>
+</html>

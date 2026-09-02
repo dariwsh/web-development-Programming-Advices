@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>High-DPI Background</title>
+  <style>
+    .hero {
+      width: 100%; height: 300px;
+      background: url('images/Standard Background Image.jpg') center/cover no-repeat;
+    }
+    /* Retina/High-DPI */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .hero {
+        background-image: url('images/High DPI Background Image.jpg');
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero"></div>
+  <p>On high-DPI screens, the @2x image loads for crispness.</p>
+</body>
+</html>

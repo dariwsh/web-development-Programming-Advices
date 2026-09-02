@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Grid: Placing Items by Line Numbers</title>
+
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(2, 60px);
+        gap: 10px;
+        background: #fafafa;
+        padding: 20px;
+        width: max-content;
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4f8eda;
+        color: #fff;
+        font-weight: bold;
+        font-size: 30px;
+        border-radius: 10px;
+      }
+
+      .item3 {
+        grid-column: 1 / 2; /* Start at column line 1 and end at column line 3 */
+        grid-row: 1 / 2; /* Start at row line 1 and end at row line 2 */
+      }
+       .item4 {
+        grid-column: 2 / 3; /* Start at column line 1 and end at column line 3 */
+        grid-row: 1 / 2; /* Start at row line 1 and end at row line 2 */
+      }
+       .item6 {
+        grid-column: 3 / 4; /* Start at column line 1 and end at column line 3 */
+        grid-row: 1 / 2; /* Start at row line 1 and end at row line 2 */
+      }
+
+
+       .item5 {
+        grid-column: 1 / 2; /* Start at column line 1 and end at column line 3 */
+        grid-row: 2 / 3; /* Start at row line 1 and end at row line 2 */
+      }
+       .item1 {
+        grid-column: 2 / 3; /* Start at column line 1 and end at column line 3 */
+        grid-row: 2 / 3; /* Start at row line 1 and end at row line 2 */
+      }
+       .item2 {
+        grid-column: 3 / 4; /* Start at column line 1 and end at column line 3 */
+        grid-row: 2 / 3; /* Start at row line 1 and end at row line 2 */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Placing Grid Items by Line Numbers</h2>
+    <div class="container">
+      <div class="item item1">E</div>
+      <div class="item item2">F</div>
+      <div class="item item3">A</div>
+      <div class="item item4">B</div>
+      <div class="item item5">D</div>
+      <div class="item item6">C</div>
+    </div>
+  </body>
+</html>

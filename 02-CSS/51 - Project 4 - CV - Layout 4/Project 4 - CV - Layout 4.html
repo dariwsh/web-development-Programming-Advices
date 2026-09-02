@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showcase CV – Cover Sidebar (CSS-only)</title>
+  <link rel="stylesheet" href="Project 4 - CV - Layout 4.css" />
+
+</head>
+<body>
+  <main class="wrap">
+    <!-- =============================== COVER SIDEBAR =============================== -->
+    <aside class="cover" aria-label="Cover">
+      <!-- Top: photo + name -->
+      <div class="me">
+        <div class="avatar" role="img" aria-label="Profile photo">
+          <img src="images/MyImage.jpg" alt="Ahmed Darwish portrait" loading="lazy" />
+        </div>
+        <div>
+          <h1 class="name">Ahmed Darwish</h1>
+          <p class="role">IT Student • Junior Developer</p>
+        </div>
+      </div>
+
+      <!-- Middle: in-page navigation (anchors) -->
+      <nav class="nav" aria-label="Section navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+      </nav>
+
+      <!-- Bottom: quick social/contact -->
+      <div class="social" aria-label="Quick links">
+        <a href="mailto:dariwshpro@gmail.com">dariwshpro@gmail.com</a>
+        <a href="https://github.com/dariwsh" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/ahmed-darwish-33b752330/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </aside>
+
+    <!-- ================================ CONTENT ================================= -->
+    <section class="content" aria-label="Main content">
+      <!-- Each real section has an ID for anchors and :target styles -->
+      <section id="about" class="section" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p class="lead">
+          I'm Ahmed Mohamed Mostafa Darwish, an IT Student at Borg El Arab Technological University with a strong foundation in programming, algorithms, and web development.
+        </p>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip">Alexandria, Egypt</span>
+          <span class="chip">+20 015 50225603</span>
+          <span class="chip">Arabic (Native)</span>
+          <span class="chip">English (Professional)</span>
+        </div>
+      </section>
+
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills & Technologies</h2>
+        <p class="muted">Core programming languages, web technologies, and developer tools.</p>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip">C / C++</span>
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">HTML5 & CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">SQL & Databases</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">VS Code & IDEs</span>
+        </div>
+      </section>
+
+      <section id="experience" class="section" aria-labelledby="exp-title">
+        <h2 id="exp-title">Experience & Training</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-role">Web Development Trainee</div>
+            <div class="tl-meta">Sprints (Microsoft) • Remote • 2025</div>
+            <ul class="muted">
+              <li>Built responsive, modern web pages using semantic HTML5, CSS3, and JavaScript.</li>
+              <li>Applied industry best practices in frontend styling and responsive UI design.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-role">Independent Developer</div>
+            <div class="tl-meta">Self-Directed Learning • 2024 — Present</div>
+            <ul class="muted">
+              <li>Developed console and web applications in C++, Java, and JavaScript.</li>
+              <li>Focused on algorithms, data structures, and OOP fundamentals.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section" aria-labelledby="proj-title">
+        <h2 id="proj-title">Selected Projects</h2>
+        
+        <div class="projects">
+          <a class="proj" href="https://github.com/ahmedmohammedmostafadarwwesh/Build" target="_blank" rel="noopener" aria-label="E-Commerce Website">
+            <h3>E-Commerce Website</h3>
+            <p class="muted">Multi-page responsive store platform with cart and blog.</p>
+          </a>
+
+          <a class="proj" href="https://ahmedmohammedmostafadarwwesh.github.io/CRUDS_2./" target="_blank" rel="noopener" aria-label="CRUDIE System">
+            <h3>CRUDIE System</h3>
+            <p class="muted">Data management CRUD application with clean UI.</p>
+          </a>
+
+          <a class="proj" href="https://github.com/dariwsh/Programming-Foundations" target="_blank" rel="noopener" aria-label="Programming Foundations">
+            <h3>Programming Foundations</h3>
+            <p class="muted">Comprehensive C++ journey in algorithms, data structures, and OOP.</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="education" class="section" aria-labelledby="edu-title">
+        <h2 id="edu-title">Education & Certifications</h2>
+        <p><strong>Bachelor of Information Technology (IT)</strong><br/>Borg El Arab Technological University • 2023 — 2028</p>
+        <ul class="muted">
+          <li>Dr. Mohamed Abu Hadhoud — 24+ Certificates in Algorithms & Programming</li>
+          <li>Sprints (Microsoft) — Web Development Fundamentals</li>
+          <li>Edraak — ICDL Base</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        margin: 30px 20px;
+        border: 1px solid #00796b;
+        margin: 30px 20px; /* 30px top and bottom, 20px left/right */
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Margin Collapse: Adjacent Siblings</h1>
+    <p>This is the first paragraph with a 30px bottom margin.</p>
+    <p>
+      This is the second paragraph with a 30px top margin.
+      <br />
+      Note: Instead of having 60px between the paragraphs (30px from each), the
+      margins collapse to 30px.
+    </p>
+  </body>
+</html>

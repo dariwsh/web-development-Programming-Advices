@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Padding Practice Activity</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    
+    /* Example using shorthand with one value (all sides the same) */
+    .one-value {
+      background-color: #e0f7fa;  /* Light cyan background */
+      border: 1px solid #00796b;  /* Teal border */
+      padding: 20px;            /* 20px padding on all sides */
+      margin-bottom: 20px;
+    }
+    
+    /* Example using shorthand with two values:
+       First value = top & bottom, second value = left & right */
+    .two-values {
+      background-color: #ffe0b2;  /* Light orange background */
+      border: 1px solid #fb8c00;  /* Orange border */
+      padding: 10px 30px;         /* 10px top/bottom, 30px left/right */
+      margin-bottom: 20px;
+    }
+    
+    /* Example using shorthand with three values:
+       First = top, Second = left & right, Third = bottom */
+    .three-values {
+      background-color: #e8f5e9;  /* Light green background */
+      border: 1px solid #388e3c;  /* Dark green border */
+      padding: 5px 15px 25px;      /* 5px top, 15px left/right, 25px bottom */
+      margin-bottom: 20px;
+    }
+    
+    /* Example using shorthand with four values:
+       Order: top, right, bottom, left */
+    .four-values {
+      background-color: #e3f2fd;  /* Light blue background */
+      border: 1px solid #1976d2;  /* Blue border */
+      padding: 10px 20px 30px 40px; /* Top 10px, right 20px, bottom 30px, left 40px */
+      margin-bottom: 20px;
+    }
+    
+    /* Example using individual padding properties */
+    .individual-padding {
+      background-color: #fce4ec;  /* Light pink background */
+      border: 1px solid #d81b60;  /* Pink border */
+      padding-top: 15px;
+      padding-right: 25px;
+      padding-bottom: 35px;
+      padding-left: 45px;
+      margin-bottom: 20px;
+    }
+    
+    /* Example using percentage-based padding */
+    .percentage-padding {
+      background-color: #fff3e0;  /* Light orange background */
+      border: 1px solid #ff9800;  /* Orange border */
+      padding: 5%;                /* Padding is 5% of the container's width on all sides */
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    /* Example on a button using padding */
+    .padded-button {
+      background-color: #c5cae9;  /* Light purple-blue background */
+      border: 1px solid #3f51b5;  /* Indigo border */
+      padding: 10px 20px;         /* 10px top/bottom, 20px left/right */
+      margin: 20px auto;
+      display: block;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Padding Practice Activity</h1>
+  
+  <!-- Using shorthand with one value -->
+  <div class="one-value">
+    This div uses <strong>padding: 20px;</strong> which applies 20px padding to all sides.
+  </div>
+  
+  <!-- Using shorthand with two values -->
+  <div class="two-values">
+    This div uses <strong>padding: 10px 30px;</strong> – 10px for top and bottom, 30px for left and right.
+  </div>
+  
+  <!-- Using shorthand with three values -->
+  <div class="three-values">
+    This div uses <strong>padding: 5px 15px 25px;</strong> – 5px top, 15px left/right, 25px bottom.
+  </div>
+  
+  <!-- Using shorthand with four values -->
+  <div class="four-values">
+    This div uses <strong>padding: 10px 20px 30px 40px;</strong> – top, right, bottom, and left respectively.
+  </div>
+  
+  <!-- Using individual padding properties -->
+  <div class="individual-padding">
+    This div demonstrates using individual padding properties: 15px top, 25px right, 35px bottom, 45px left.
+  </div>
+  
+  <!-- Using percentage-based padding -->
+  <div class="percentage-padding">
+    This div uses percentage-based padding (5% on all sides), making the padding responsive to the container's width.
+  </div>
+  
+  <!-- A button with padding for a comfortable clickable area -->
+  <button class="padded-button">
+    Click Me!
+  </button>
+  
+  <!--
+    Documentation of Findings:
+    - The .one-value div provided consistent 20px padding on all sides, making the content well-spaced.
+    - The .two-values div effectively separated vertical and horizontal padding, providing a different visual balance.
+    - The .three-values div allowed a distinct top, left/right, and bottom padding which changed the vertical spacing more noticeably.
+    - The .four-values div showcased how to control each side's padding precisely.
+    - The .individual-padding div demonstrated fine-tuning each side's padding separately.
+    - The .percentage-padding div adapts the padding based on the container's width, useful for responsive designs.
+    - The button styled with padding ensured a comfortable clickable area.
+    
+    Challenges:
+    - Balancing padding to achieve a harmonious layout can be tricky, especially with different screen sizes.
+    - Combining padding with borders requires attention to the overall dimensions, as padding increases the element's size.
+    - Ensuring that percentage-based padding remains consistent across various devices sometimes requires additional media queries for fine-tuning.
+  -->
+</body>
+</html>

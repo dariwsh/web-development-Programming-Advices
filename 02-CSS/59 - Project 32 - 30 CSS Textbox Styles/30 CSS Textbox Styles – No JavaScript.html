@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>100 CSS Textboxes – Effects Gallery (No JS)</title>
+<style>
+:root{
+  --bg: #0b1220;
+  --panel: #0f172a;
+  --ink: #e5e7eb;
+  --muted: #9aa4b2;
+  --ring: 0 0 0 3px rgba(34,211,238,.45);
+  --brand1: #22d3ee;
+  --brand2: #a78bfa;
+  --bd: rgba(255,255,255,.16);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f5f7fb; --panel:#ffffff; --ink:#0f172a; --muted:#4b5563; --bd: rgba(0,0,0,.15);
+    --ring: 0 0 0 3px rgba(14,165,233,.35);
+  }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif; color:var(--ink);
+  background: radial-gradient(1200px 700px at 10% -10%, rgba(34,211,238,.10), transparent 60%),
+              radial-gradient(1200px 700px at 100% 0%, rgba(167,139,250,.08), transparent 60%),
+              var(--bg);
+}
+.header{max-width:1100px;margin:36px auto 8px;padding:0 16px}
+.header h1{margin:0 0 6px;font-weight:800}
+.header p{margin:0;color:var(--muted)}
+.wrapper{max-width:1100px;margin:16px auto 64px;padding:16px;background:color-mix(in oklab,var(--panel) 92%,transparent);border:1px solid var(--bd);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+
+.grid{display:grid;grid-template-columns: 250px 1fr;gap:14px 18px}
+@media (max-width:860px){.grid{grid-template-columns:1fr;}}
+.label{align-self:center;color:var(--muted)}
+
+.tb{
+  --bg: #121a2a;
+  --ink: #eaf2ff;
+  --ph: #8aa2c7;
+  --bdc: var(--bd);
+  --shadow: 0 10px 22px rgba(0,0,0,.25);
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--bdc);
+  background: var(--bg); color: var(--ink);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease,
+             filter .18s ease, outline-color .18s ease;
+}
+.tb::placeholder{color:var(--ph)}
+.tb:focus-visible{outline:none; box-shadow: var(--shadow), var(--ring); border-color:transparent}
+
+.row{display:contents}
+.badge{font:600 .8rem/1 system-ui; color:#0b1220; background:linear-gradient(135deg,var(--brand1),var(--brand2)); padding:2px 8px; border-radius:999px}
+
+/* 1) Solid brand border + soft glow */
+.tb-1{ border-color: color-mix(in oklab,var(--brand1) 65%, var(--bd)); box-shadow: inset 0 0 0 1px rgba(34,211,238,.25) }
+.tb-1:focus-visible{ box-shadow: 0 0 0 6px rgba(34,211,238,.15), var(--ring) }
+
+/* 2) Gradient border using double background */
+.tb-2{ background:
+  linear-gradient(var(--panel), var(--panel)) padding-box,
+  linear-gradient(135deg,var(--brand1),var(--brand2)) border-box;
+  border:2px solid transparent }
+
+/* 3) Ghost underline only */
+.tb-3{ border:none; border-bottom:2px solid var(--bd); border-radius:0; background:transparent }
+.tb-3:hover{ border-bottom-color: color-mix(in oklab,var(--ink) 40%, var(--bd)) }
+.tb-3:focus-visible{ box-shadow: none; border-bottom-color: var(--brand1) }
+
+/* 4) Filled + subtle inner shadow */
+.tb-4{ background:#0f172a; box-shadow: inset 0 2px 6px rgba(255,255,255,.05), inset 0 -8px 18px rgba(0,0,0,.6) }
+
+/* 5) Pill shape */
+.tb-5{ border-radius:999px }
+
+/* 6) Notched corners via clip-path */
+.tb-6{ clip-path: polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px) }
+
+/* 7) Inner glow (focus inward) */
+.tb-7{ box-shadow: inset 0 0 0 2px rgba(255,255,255,.12), inset 0 0 24px rgba(34,211,238,.08) }
+
+/* 8) Neon outline */
+.tb-8{ border-color:#0ea5e9; text-shadow: 0 0 6px rgba(34,211,238,.55) }
+.tb-8:focus-visible{ box-shadow: 0 0 20px rgba(34,211,238,.35) }
+
+/* 9) Glassmorphism */
+.tb-9{ background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.20); backdrop-filter: blur(8px) saturate(120%) }
+
+/* 10) Soft gradient fill */
+.tb-10{ background: linear-gradient(135deg, #0f1a30, #0b2038) }
+
+/* 11) Embossed (bevel) */
+.tb-11{ box-shadow: inset 1px 1px 0 rgba(255,255,255,.08), inset -1px -1px 0 rgba(0,0,0,.5) }
+
+/* 12) Conic border ring on focus */
+.tb-12{ position:relative; z-index:0 }
+.tb-12:focus-visible{ box-shadow: var(--ring), 0 0 0 2px transparent }
+.tb-12:focus-visible{ outline: none }
+
+/* 13) Dashed border */
+.tb-13{ border-style:dashed }
+
+/* 14) Double border */
+.tb-14{ border:2px double color-mix(in oklab,var(--ink) 50%, var(--bd)) }
+
+/* 15) Shadow lift on hover */
+.tb-15{ transition: transform .15s ease, box-shadow .15s ease }
+.tb-15:hover{ transform: translateY(-1px); box-shadow: 0 14px 26px rgba(0,0,0,.35) }
+
+/* 16) Icon padding (left) */
+.tb-16{ padding-left:42px; background:
+  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>') no-repeat 12px center,
+  var(--bg) }
+
+/* 17) Success theme */
+.tb-17{ border-color:#10b981; background:#0c1f1a }
+
+/* 18) Warning theme */
+.tb-18{ border-color:#f59e0b; background:#271907 }
+
+/* 19) Danger theme */
+.tb-19{ border-color:#ef4444; background:#2a0f12 }
+
+/* 20) Rainbow underline (animated) */
+.tb-20{ border:none; border-bottom:3px solid transparent; border-radius:0; background:transparent }
+.tb-20:focus-visible{ box-shadow:none }
+.tb-20{ background-image: linear-gradient(var(--panel), var(--panel)), linear-gradient(90deg,#ef4444,#f59e0b,#22c55e,#3b82f6,#a855f7); background-origin:border-box; background-clip: padding-box, border-box; border-bottom:3px solid transparent; }
+
+/* 21) Stripe fill */
+.tb-21{ background: repeating-linear-gradient(45deg, #0f1a30 0 12px, #0b1324 12px 24px) }
+
+/* 22) Minimal ghost (no bg, thin border) */
+.tb-22{ background:transparent; border-color: color-mix(in oklab,var(--ink) 25%, transparent) }
+.tb-22:hover{ border-color: color-mix(in oklab,var(--ink) 45%, transparent) }
+
+/* 23) Thick border + rounded */
+.tb-23{ border-width:3px; border-color:#334155; border-radius:18px }
+
+/* 24) Gradient fill w/ shine */
+.tb-24{ position:relative; overflow:hidden; background: linear-gradient(135deg,#13203b,#0a172b) }
+.tb-24:hover{ filter: brightness(1.06) }
+.tb-24::after{ content:""; position:absolute; inset:-120% -40%; background: linear-gradient(60deg, transparent 30%, rgba(255,255,255,.5) 50%, transparent 70%); transform: translateX(-15%); transition: transform .45s ease }
+.tb-24:hover::after{ transform: translateX(45%) }
+
+/* 25) Inset cut (top-left & bottom-right) */
+.tb-25{ box-shadow: inset 6px 6px 12px rgba(0,0,0,.45), inset -6px -6px 12px rgba(255,255,255,.04) }
+
+/* 26) Outline focus only (no default border) */
+.tb-26{ border-color: transparent; background:#0f182a }
+.tb-26:focus-visible{ border-color: transparent; box-shadow: var(--ring) }
+
+/* 27) Frosted strong (blurrier glass) */
+.tb-27{ background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28); backdrop-filter: blur(14px) saturate(130%) }
+
+/* 28) Text gradient (foreground) */
+.tb-28{ color:transparent; background-image: linear-gradient(90deg,var(--brand1),var(--brand2)); -webkit-background-clip:text; background-clip:text; border-color:#3b4b67 }
+.tb-28::placeholder{ color:transparent }
+
+/* 29) Edge glow shadow */
+.tb-29{ box-shadow: 0 0 0 0 rgba(34,211,238,0); }
+.tb-29:focus-visible{ box-shadow: 0 0 0 0 rgba(34,211,238,0), 0 0 22px rgba(34,211,238,.35) }
+
+/* 30) Label capsule: background + border */
+.tb-30{ padding-left:14px; border:2px solid transparent; background:
+  linear-gradient(var(--bg), var(--bg)) padding-box,
+  linear-gradient(135deg,#22d3ee,#a78bfa) border-box;
+}
+
+/* 31) Focus Scale Up */
+.tb-31{ transition: transform .15s ease, box-shadow .15s ease }
+.tb-31:focus-visible{ transform: scale(1.02); box-shadow: var(--ring) }
+
+/* 32) Bottom Accent Bar */
+.tb-32{ border:1px solid var(--bd); border-bottom:4px solid var(--brand1) }
+
+/* 33) Top Accent Bar */
+.tb-33{ border:1px solid var(--bd); border-top:4px solid var(--brand2) }
+
+/* 34) Corner Ribbon Accent */
+.tb-34{ position:relative; overflow:hidden }
+.tb-34::before{ content:""; position:absolute; top:-14px; right:-14px; width:28px; height:28px; background:linear-gradient(135deg,var(--brand1),var(--brand2)); transform:rotate(45deg) }
+
+/* 35) Dotted Border */
+.tb-35{ border-style:dotted; border-width:2px }
+
+/* 36) Groove Border */
+.tb-36{ border-style:groove; border-width:4px; border-color:#334155 }
+
+/* 37) Ridge Border */
+.tb-37{ border-style:ridge; border-width:4px; border-color:#334155 }
+
+/* 38) Inset Border Style */
+.tb-38{ border-style:inset; border-width:3px; border-color:#334155 }
+
+/* 39) Outset Border Style */
+.tb-39{ border-style:outset; border-width:3px; border-color:#334155 }
+
+/* 40) Zigzag Bottom */
+.tb-40{ clip-path: polygon(0 0,100% 0,100% 88%,95% 100%,90% 88%,85% 100%,80% 88%,75% 100%,70% 88%,65% 100%,60% 88%,55% 100%,50% 88%,45% 100%,40% 88%,35% 100%,30% 88%,25% 100%,20% 88%,15% 100%,10% 88%,5% 100%,0 88%) }
+
+/* 41) Arrow Left Accent */
+.tb-41{ padding-left:34px; position:relative }
+.tb-41::before{ content:"→"; position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--brand1) }
+
+/* 42) Gradient Glow Placeholder */
+.tb-42{ border-color:#3b4b67 }
+.tb-42::placeholder{ background-image:linear-gradient(90deg,var(--brand1),var(--brand2)); -webkit-background-clip:text; background-clip:text; color:transparent; opacity:1 }
+
+/* 43) Diagonal Split Background */
+.tb-43{ background: linear-gradient(115deg, #0f1a30 50%, #1a1030 50%) }
+
+/* 44) Two-Tone Halves */
+.tb-44{ background: linear-gradient(90deg, #0d1b2a 50%, #1b0d2a 50%) }
+
+/* 45) Circuit Accent */
+.tb-45{ padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="%2322d3ee" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M6 8v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"/></svg>') no-repeat 10px center, var(--bg) }
+
+/* 46) Check Icon Right */
+.tb-46{ padding-right:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%2310b981" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>') no-repeat right 12px center, var(--bg) }
+
+/* 47) Search Icon Left */
+.tb-47{ padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>') no-repeat 12px center, var(--bg) }
+
+/* 48) Lock Icon Left */
+.tb-48{ padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>') no-repeat 12px center, var(--bg) }
+
+/* 49) Mail Icon Left */
+.tb-49{ padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>') no-repeat 12px center, var(--bg) }
+
+/* 50) Calendar Icon Left */
+.tb-50{ padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>') no-repeat 12px center, var(--bg) }
+
+/* 51) Clear Icon Corner */
+.tb-51{ padding-right:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%238aa2c7" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>') no-repeat right 12px center, var(--bg) }
+
+/* 52) Neumorphic Soft */
+.tb-52{ background:#141b2b; border:none; box-shadow: 8px 8px 16px rgba(0,0,0,.45), -8px -8px 16px rgba(255,255,255,.03) }
+
+/* 53) Neumorphic Pressed */
+.tb-53{ background:#141b2b; border:none; box-shadow: inset 6px 6px 12px rgba(0,0,0,.5), inset -6px -6px 12px rgba(255,255,255,.03) }
+
+/* 54) Glow Pulse On Hover */
+.tb-54{ transition: box-shadow .25s ease }
+.tb-54:hover{ box-shadow: 0 0 0 4px rgba(34,211,238,.18), 0 0 24px rgba(34,211,238,.25) }
+
+/* 55) Skewed Shape */
+.tb-55{ transform: skewX(-6deg) }
+.tb-55::placeholder{ font-style:normal }
+
+/* 56) Rounded Left Square Right */
+.tb-56{ border-radius: 999px 4px 4px 999px }
+
+/* 57) Gradient Stripe Left */
+.tb-57{ border-left:6px solid; border-image: linear-gradient(var(--brand1),var(--brand2)) 1 }
+
+/* 58) Gradient Stripe Right */
+.tb-58{ border-right:6px solid; border-image: linear-gradient(var(--brand2),var(--brand1)) 1 }
+
+/* 59) Frosted Border Glow */
+.tb-59{ background: rgba(255,255,255,.06); border:1px solid rgba(34,211,238,.4); backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(34,211,238,.15) }
+
+/* 60) Paper Texture */
+.tb-60{ background: repeating-linear-gradient(0deg, #101a2c 0 2px, #0e1729 2px 4px) }
+
+/* 61) Terminal Style */
+.tb-61{ background:#04120a; color:#4ade80; border-color:#14532d; font-family: ui-monospace,Consolas,monospace }
+.tb-61::placeholder{ color:#3f7a52 }
+
+/* 62) Retro 90s Bevel */
+.tb-62{ background:#c0c0c0; color:#111; border-top:2px solid #fff; border-left:2px solid #fff; border-right:2px solid #555; border-bottom:2px solid #555; border-radius:0 }
+.tb-62::placeholder{ color:#333 }
+
+/* 63) Underline Gradient On Hover */
+.tb-63{ border:none; border-bottom:2px solid var(--bd); border-radius:0; background:transparent; transition: border-image .2s ease }
+.tb-63:hover, .tb-63:focus-visible{ box-shadow:none; border-bottom:2px solid; border-image: linear-gradient(90deg,var(--brand1),var(--brand2)) 1 }
+
+/* 64) Asymmetric Radius */
+.tb-64{ border-radius: 26px 6px 26px 6px }
+
+/* 65) Floating Label Static */
+.tb-65{ padding-top:18px; padding-bottom:6px; position:relative }
+
+/* 66) Corner Badge NEW */
+.tb-66{ position:relative }
+.tb-66::after{ content:"NEW"; position:absolute; top:-9px; right:8px; font:700 .65rem/1 system-ui; background:linear-gradient(135deg,var(--brand1),var(--brand2)); color:#0b1220; padding:3px 7px; border-radius:999px }
+
+/* 67) Dashed Corner Accents */
+.tb-67{ border:1px dashed var(--bd); position:relative }
+.tb-67::before,.tb-67::after{ content:""; position:absolute; width:10px; height:10px; border:2px solid var(--brand1) }
+.tb-67::before{ top:-2px; left:-2px; border-right:none; border-bottom:none }
+.tb-67::after{ bottom:-2px; right:-2px; border-left:none; border-top:none }
+
+/* 68) Candy Stripe Border */
+.tb-68{ border:3px solid transparent; background: linear-gradient(var(--bg),var(--bg)) padding-box, repeating-linear-gradient(45deg, var(--brand1) 0 8px, var(--brand2) 8px 16px) border-box }
+
+/* 69) Wave Underline */
+.tb-69{ border:none; border-radius:0; background: linear-gradient(var(--bg),var(--bg)) no-repeat, url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="10" viewBox="0 0 120 10"><path d="M0 5 Q 10 0 20 5 T 40 5 T 60 5 T 80 5 T 100 5 T 120 5" fill="none" stroke="%2322d3ee" stroke-width="2"/></svg>') repeat-x bottom / 120px 10px }
+
+/* 70) Confetti Dots */
+.tb-70{ background-image: radial-gradient(circle, rgba(34,211,238,.4) 1px, transparent 1.5px), radial-gradient(circle, rgba(167,139,250,.4) 1px, transparent 1.5px); background-size: 18px 18px, 22px 22px; background-position: 0 0, 9px 9px; background-color:#101a2c }
+
+/* 71) Holographic Shift */
+.tb-71{ background: linear-gradient(120deg,#22d3ee33,#a78bfa33,#f59e0b33,#22d3ee33); background-size:300% 300%; border-color: rgba(255,255,255,.25) }
+
+/* 72) Sunset Gradient Fill */
+.tb-72{ background: linear-gradient(135deg,#7c2d12,#9d174d) }
+
+/* 73) Ocean Gradient Fill */
+.tb-73{ background: linear-gradient(135deg,#083344,#0c4a6e) }
+
+/* 74) Forest Gradient Fill */
+.tb-74{ background: linear-gradient(135deg,#052e16,#14532d) }
+
+/* 75) Monochrome Flat */
+.tb-75{ background:#1a1a1a; border-color:#3a3a3a; color:#e5e5e5 }
+
+/* 76) High Contrast */
+.tb-76{ background:#000; color:#fff; border:2px solid #fff }
+.tb-76::placeholder{ color:#bbb }
+
+/* 77) Pastel Pink Theme */
+.tb-77{ background:#2a1620; border-color:#f9a8d4; color:#fbcfe8 }
+
+/* 78) Pastel Blue Theme */
+.tb-78{ background:#0f1e2e; border-color:#93c5fd; color:#bfdbfe }
+
+/* 79) Animated Glow Border */
+.tb-79{ border:2px solid; border-image: linear-gradient(90deg,var(--brand1),var(--brand2),var(--brand1)) 1; box-shadow: 0 0 16px rgba(34,211,238,.25) }
+
+/* 80) Large Shadow Lift Card */
+.tb-80{ border:none; box-shadow: 0 22px 40px rgba(0,0,0,.45) }
+
+/* 81) Compact Padding */
+.tb-81{ padding:6px 10px; border-radius:8px }
+
+/* 82) Spacious Padding */
+.tb-82{ padding:20px 22px; border-radius:16px }
+
+/* 83) Bold Text */
+.tb-83{ font-weight:800 }
+
+/* 84) Italic Placeholder */
+.tb-84{ }
+.tb-84::placeholder{ font-style:italic }
+
+/* 85) Uppercase Text */
+.tb-85{ text-transform:uppercase; letter-spacing:.04em }
+
+/* 86) Letter Spaced */
+.tb-86{ letter-spacing:.18em }
+
+/* 87) Serif Font */
+.tb-87{ font-family: Georgia,'Times New Roman',serif }
+
+/* 88) Pill With Icon */
+.tb-88{ border-radius:999px; padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>') no-repeat 14px center, var(--bg) }
+
+/* 89) Deep Focus Ring Stack */
+.tb-89{ }
+.tb-89:focus-visible{ box-shadow: 0 0 0 3px rgba(34,211,238,.35), 0 0 0 7px rgba(167,139,250,.2) }
+
+/* 90) Icon Separator */
+.tb-90{ padding-left:44px; position:relative }
+.tb-90::before{ content:""; position:absolute; left:36px; top:8px; bottom:8px; width:1px; background:var(--bd) }
+.tb-90{ background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23a6b6d4" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 9h20"/></svg>') no-repeat 10px center, var(--bg) }
+
+/* 91) Single Corner Cut */
+.tb-91{ clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%) }
+
+/* 92) Opposite Corner Cuts */
+.tb-92{ clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px) }
+
+/* 93) Thick Colored Bottom */
+.tb-93{ border:none; border-bottom:5px solid #f59e0b; border-radius:6px 6px 0 0; background:#1c1508 }
+
+/* 94) Thick Colored Top */
+.tb-94{ border:none; border-top:5px solid #a78bfa; border-radius:0 0 6px 6px; background:#170f26 }
+
+/* 95) Left Accent Border Thick */
+.tb-95{ border:1px solid var(--bd); border-left:6px solid var(--brand1) }
+
+/* 96) Right Accent Border Thick */
+.tb-96{ border:1px solid var(--bd); border-right:6px solid var(--brand2) }
+
+/* 97) Grid Texture Background */
+.tb-97{ background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 14px 14px; background-color:#101a2c }
+
+/* 98) Diagonal Lines Background */
+.tb-98{ background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 10px); background-color:#0f1a30 }
+
+/* 99) Glass Pill With Icon */
+.tb-99{ border-radius:999px; padding-left:42px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23e5e7eb" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>') no-repeat 14px center, rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); backdrop-filter: blur(10px) }
+
+/* 100) Grand Finale Gradient Pill */
+.tb-100{ border-radius:999px; border:2px solid transparent; background: linear-gradient(var(--bg),var(--bg)) padding-box, linear-gradient(90deg,#22d3ee,#a78bfa,#f59e0b,#22d3ee) border-box; box-shadow: 0 12px 30px rgba(34,211,238,.2), 0 0 0 1px rgba(255,255,255,.05) inset }
+.tb-100:focus-visible{ box-shadow: 0 0 0 4px rgba(167,139,250,.25), 0 12px 30px rgba(34,211,238,.3) }
+
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1>100 CSS Textbox Styles – No JavaScript</h1>
+    <p>Each input below uses a unique class <span class="badge">.tb‑N</span> (N = 1…100). Focus or hover a field to preview its effect.</p>
+  </header>
+
+  <main class="wrapper">
+    <section class="grid" aria-label="Textboxes gallery">
+
+      <div class="row">
+        <div class="label">1) Solid Brand Border</div>
+        <input class="tb tb-1" type="text" placeholder="tb-1 – Solid Brand Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">2) Gradient Border</div>
+        <input class="tb tb-2" type="text" placeholder="tb-2 – Gradient Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">3) Underline Only</div>
+        <input class="tb tb-3" type="text" placeholder="tb-3 – Underline Only" />
+      </div>
+
+      <div class="row">
+        <div class="label">4) Inset Soft</div>
+        <input class="tb tb-4" type="text" placeholder="tb-4 – Inset Soft" />
+      </div>
+
+      <div class="row">
+        <div class="label">5) Pill Shape</div>
+        <input class="tb tb-5" type="text" placeholder="tb-5 – Pill Shape" />
+      </div>
+
+      <div class="row">
+        <div class="label">6) Notched Corners</div>
+        <input class="tb tb-6" type="text" placeholder="tb-6 – Notched Corners" />
+      </div>
+
+      <div class="row">
+        <div class="label">7) Inner Glow</div>
+        <input class="tb tb-7" type="text" placeholder="tb-7 – Inner Glow" />
+      </div>
+
+      <div class="row">
+        <div class="label">8) Neon Outline</div>
+        <input class="tb tb-8" type="text" placeholder="tb-8 – Neon Outline" />
+      </div>
+
+      <div class="row">
+        <div class="label">9) Glassmorphism</div>
+        <input class="tb tb-9" type="text" placeholder="tb-9 – Glassmorphism" />
+      </div>
+
+      <div class="row">
+        <div class="label">10) Soft Gradient Fill</div>
+        <input class="tb tb-10" type="text" placeholder="tb-10 – Soft Gradient Fill" />
+      </div>
+
+      <div class="row">
+        <div class="label">11) Embossed Bevel</div>
+        <input class="tb tb-11" type="text" placeholder="tb-11 – Embossed Bevel" />
+      </div>
+
+      <div class="row">
+        <div class="label">12) Conic Halo Focus</div>
+        <input class="tb tb-12" type="text" placeholder="tb-12 – Conic Halo Focus" />
+      </div>
+
+      <div class="row">
+        <div class="label">13) Dashed Border</div>
+        <input class="tb tb-13" type="text" placeholder="tb-13 – Dashed Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">14) Double Border</div>
+        <input class="tb tb-14" type="text" placeholder="tb-14 – Double Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">15) Hover Lift</div>
+        <input class="tb tb-15" type="text" placeholder="tb-15 – Hover Lift" />
+      </div>
+
+      <div class="row">
+        <div class="label">16) Icon (Left)</div>
+        <input class="tb tb-16" type="text" placeholder="tb-16 – Icon (Left)" />
+      </div>
+
+      <div class="row">
+        <div class="label">17) Success Theme</div>
+        <input class="tb tb-17" type="text" placeholder="tb-17 – Success Theme" />
+      </div>
+
+      <div class="row">
+        <div class="label">18) Warning Theme</div>
+        <input class="tb tb-18" type="text" placeholder="tb-18 – Warning Theme" />
+      </div>
+
+      <div class="row">
+        <div class="label">19) Danger Theme</div>
+        <input class="tb tb-19" type="text" placeholder="tb-19 – Danger Theme" />
+      </div>
+
+      <div class="row">
+        <div class="label">20) Rainbow Underline</div>
+        <input class="tb tb-20" type="text" placeholder="tb-20 – Rainbow Underline" />
+      </div>
+
+      <div class="row">
+        <div class="label">21) Striped Fill</div>
+        <input class="tb tb-21" type="text" placeholder="tb-21 – Striped Fill" />
+      </div>
+
+      <div class="row">
+        <div class="label">22) Minimal Ghost</div>
+        <input class="tb tb-22" type="text" placeholder="tb-22 – Minimal Ghost" />
+      </div>
+
+      <div class="row">
+        <div class="label">23) Thick Rounded Border</div>
+        <input class="tb tb-23" type="text" placeholder="tb-23 – Thick Rounded Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">24) Shine Sweep</div>
+        <input class="tb tb-24" type="text" placeholder="tb-24 – Shine Sweep" />
+      </div>
+
+      <div class="row">
+        <div class="label">25) Inset Cut</div>
+        <input class="tb tb-25" type="text" placeholder="tb-25 – Inset Cut" />
+      </div>
+
+      <div class="row">
+        <div class="label">26) Focus Ring Only</div>
+        <input class="tb tb-26" type="text" placeholder="tb-26 – Focus Ring Only" />
+      </div>
+
+      <div class="row">
+        <div class="label">27) Strong Frosted</div>
+        <input class="tb tb-27" type="text" placeholder="tb-27 – Strong Frosted" />
+      </div>
+
+      <div class="row">
+        <div class="label">28) Text Gradient</div>
+        <input class="tb tb-28" type="text" placeholder="tb-28 – Text Gradient" />
+      </div>
+
+      <div class="row">
+        <div class="label">29) Edge Glow</div>
+        <input class="tb tb-29" type="text" placeholder="tb-29 – Edge Glow" />
+      </div>
+
+      <div class="row">
+        <div class="label">30) Capsule Label Border</div>
+        <input class="tb tb-30" type="text" placeholder="tb-30 – Capsule Label Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">31) Focus Scale Up</div>
+        <input class="tb tb-31" type="text" placeholder="tb-31 – Focus Scale Up" />
+      </div>
+
+      <div class="row">
+        <div class="label">32) Bottom Accent Bar</div>
+        <input class="tb tb-32" type="text" placeholder="tb-32 – Bottom Accent Bar" />
+      </div>
+
+      <div class="row">
+        <div class="label">33) Top Accent Bar</div>
+        <input class="tb tb-33" type="text" placeholder="tb-33 – Top Accent Bar" />
+      </div>
+
+      <div class="row">
+        <div class="label">34) Corner Ribbon Accent</div>
+        <input class="tb tb-34" type="text" placeholder="tb-34 – Corner Ribbon Accent" />
+      </div>
+
+      <div class="row">
+        <div class="label">35) Dotted Border</div>
+        <input class="tb tb-35" type="text" placeholder="tb-35 – Dotted Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">36) Groove Border</div>
+        <input class="tb tb-36" type="text" placeholder="tb-36 – Groove Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">37) Ridge Border</div>
+        <input class="tb tb-37" type="text" placeholder="tb-37 – Ridge Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">38) Inset Border Style</div>
+        <input class="tb tb-38" type="text" placeholder="tb-38 – Inset Border Style" />
+      </div>
+
+      <div class="row">
+        <div class="label">39) Outset Border Style</div>
+        <input class="tb tb-39" type="text" placeholder="tb-39 – Outset Border Style" />
+      </div>
+
+      <div class="row">
+        <div class="label">40) Zigzag Bottom</div>
+        <input class="tb tb-40" type="text" placeholder="tb-40 – Zigzag Bottom" />
+      </div>
+
+      <div class="row">
+        <div class="label">41) Arrow Left Accent</div>
+        <input class="tb tb-41" type="text" placeholder="tb-41 – Arrow Left Accent" />
+      </div>
+
+      <div class="row">
+        <div class="label">42) Gradient Glow Placeholder</div>
+        <input class="tb tb-42" type="text" placeholder="tb-42 – Gradient Glow Placeholder" />
+      </div>
+
+      <div class="row">
+        <div class="label">43) Diagonal Split Background</div>
+        <input class="tb tb-43" type="text" placeholder="tb-43 – Diagonal Split Background" />
+      </div>
+
+      <div class="row">
+        <div class="label">44) Two-Tone Halves</div>
+        <input class="tb tb-44" type="text" placeholder="tb-44 – Two-Tone Halves" />
+      </div>
+
+      <div class="row">
+        <div class="label">45) Circuit Accent</div>
+        <input class="tb tb-45" type="text" placeholder="tb-45 – Circuit Accent" />
+      </div>
+
+      <div class="row">
+        <div class="label">46) Check Icon Right</div>
+        <input class="tb tb-46" type="text" placeholder="tb-46 – Check Icon Right" />
+      </div>
+
+      <div class="row">
+        <div class="label">47) Search Icon Left</div>
+        <input class="tb tb-47" type="text" placeholder="tb-47 – Search Icon Left" />
+      </div>
+
+      <div class="row">
+        <div class="label">48) Lock Icon Left</div>
+        <input class="tb tb-48" type="text" placeholder="tb-48 – Lock Icon Left" />
+      </div>
+
+      <div class="row">
+        <div class="label">49) Mail Icon Left</div>
+        <input class="tb tb-49" type="text" placeholder="tb-49 – Mail Icon Left" />
+      </div>
+
+      <div class="row">
+        <div class="label">50) Calendar Icon Left</div>
+        <input class="tb tb-50" type="text" placeholder="tb-50 – Calendar Icon Left" />
+      </div>
+
+      <div class="row">
+        <div class="label">51) Clear Icon Corner</div>
+        <input class="tb tb-51" type="text" placeholder="tb-51 – Clear Icon Corner" />
+      </div>
+
+      <div class="row">
+        <div class="label">52) Neumorphic Soft</div>
+        <input class="tb tb-52" type="text" placeholder="tb-52 – Neumorphic Soft" />
+      </div>
+
+      <div class="row">
+        <div class="label">53) Neumorphic Pressed</div>
+        <input class="tb tb-53" type="text" placeholder="tb-53 – Neumorphic Pressed" />
+      </div>
+
+      <div class="row">
+        <div class="label">54) Glow Pulse On Hover</div>
+        <input class="tb tb-54" type="text" placeholder="tb-54 – Glow Pulse On Hover" />
+      </div>
+
+      <div class="row">
+        <div class="label">55) Skewed Shape</div>
+        <input class="tb tb-55" type="text" placeholder="tb-55 – Skewed Shape" />
+      </div>
+
+      <div class="row">
+        <div class="label">56) Rounded Left Square Right</div>
+        <input class="tb tb-56" type="text" placeholder="tb-56 – Rounded Left Square Right" />
+      </div>
+
+      <div class="row">
+        <div class="label">57) Gradient Stripe Left</div>
+        <input class="tb tb-57" type="text" placeholder="tb-57 – Gradient Stripe Left" />
+      </div>
+
+      <div class="row">
+        <div class="label">58) Gradient Stripe Right</div>
+        <input class="tb tb-58" type="text" placeholder="tb-58 – Gradient Stripe Right" />
+      </div>
+
+      <div class="row">
+        <div class="label">59) Frosted Border Glow</div>
+        <input class="tb tb-59" type="text" placeholder="tb-59 – Frosted Border Glow" />
+      </div>
+
+      <div class="row">
+        <div class="label">60) Paper Texture</div>
+        <input class="tb tb-60" type="text" placeholder="tb-60 – Paper Texture" />
+      </div>
+
+      <div class="row">
+        <div class="label">61) Terminal Style</div>
+        <input class="tb tb-61" type="text" placeholder="tb-61 – Terminal Style" />
+      </div>
+
+      <div class="row">
+        <div class="label">62) Retro 90s Bevel</div>
+        <input class="tb tb-62" type="text" placeholder="tb-62 – Retro 90s Bevel" />
+      </div>
+
+      <div class="row">
+        <div class="label">63) Underline Gradient On Hover</div>
+        <input class="tb tb-63" type="text" placeholder="tb-63 – Underline Gradient On Hover" />
+      </div>
+
+      <div class="row">
+        <div class="label">64) Asymmetric Radius</div>
+        <input class="tb tb-64" type="text" placeholder="tb-64 – Asymmetric Radius" />
+      </div>
+
+      <div class="row">
+        <div class="label">65) Floating Label Static</div>
+        <input class="tb tb-65" type="text" placeholder="tb-65 – Floating Label Static" />
+      </div>
+
+      <div class="row">
+        <div class="label">66) Corner Badge NEW</div>
+        <input class="tb tb-66" type="text" placeholder="tb-66 – Corner Badge NEW" />
+      </div>
+
+      <div class="row">
+        <div class="label">67) Dashed Corner Accents</div>
+        <input class="tb tb-67" type="text" placeholder="tb-67 – Dashed Corner Accents" />
+      </div>
+
+      <div class="row">
+        <div class="label">68) Candy Stripe Border</div>
+        <input class="tb tb-68" type="text" placeholder="tb-68 – Candy Stripe Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">69) Wave Underline</div>
+        <input class="tb tb-69" type="text" placeholder="tb-69 – Wave Underline" />
+      </div>
+
+      <div class="row">
+        <div class="label">70) Confetti Dots</div>
+        <input class="tb tb-70" type="text" placeholder="tb-70 – Confetti Dots" />
+      </div>
+
+      <div class="row">
+        <div class="label">71) Holographic Shift</div>
+        <input class="tb tb-71" type="text" placeholder="tb-71 – Holographic Shift" />
+      </div>
+
+      <div class="row">
+        <div class="label">72) Sunset Gradient Fill</div>
+        <input class="tb tb-72" type="text" placeholder="tb-72 – Sunset Gradient Fill" />
+      </div>
+
+      <div class="row">
+        <div class="label">73) Ocean Gradient Fill</div>
+        <input class="tb tb-73" type="text" placeholder="tb-73 – Ocean Gradient Fill" />
+      </div>
+
+      <div class="row">
+        <div class="label">74) Forest Gradient Fill</div>
+        <input class="tb tb-74" type="text" placeholder="tb-74 – Forest Gradient Fill" />
+      </div>
+
+      <div class="row">
+        <div class="label">75) Monochrome Flat</div>
+        <input class="tb tb-75" type="text" placeholder="tb-75 – Monochrome Flat" />
+      </div>
+
+      <div class="row">
+        <div class="label">76) High Contrast</div>
+        <input class="tb tb-76" type="text" placeholder="tb-76 – High Contrast" />
+      </div>
+
+      <div class="row">
+        <div class="label">77) Pastel Pink Theme</div>
+        <input class="tb tb-77" type="text" placeholder="tb-77 – Pastel Pink Theme" />
+      </div>
+
+      <div class="row">
+        <div class="label">78) Pastel Blue Theme</div>
+        <input class="tb tb-78" type="text" placeholder="tb-78 – Pastel Blue Theme" />
+      </div>
+
+      <div class="row">
+        <div class="label">79) Animated Glow Border</div>
+        <input class="tb tb-79" type="text" placeholder="tb-79 – Animated Glow Border" />
+      </div>
+
+      <div class="row">
+        <div class="label">80) Large Shadow Lift Card</div>
+        <input class="tb tb-80" type="text" placeholder="tb-80 – Large Shadow Lift Card" />
+      </div>
+
+      <div class="row">
+        <div class="label">81) Compact Padding</div>
+        <input class="tb tb-81" type="text" placeholder="tb-81 – Compact Padding" />
+      </div>
+
+      <div class="row">
+        <div class="label">82) Spacious Padding</div>
+        <input class="tb tb-82" type="text" placeholder="tb-82 – Spacious Padding" />
+      </div>
+
+      <div class="row">
+        <div class="label">83) Bold Text</div>
+        <input class="tb tb-83" type="text" placeholder="tb-83 – Bold Text" />
+      </div>
+
+      <div class="row">
+        <div class="label">84) Italic Placeholder</div>
+        <input class="tb tb-84" type="text" placeholder="tb-84 – Italic Placeholder" />
+      </div>
+
+      <div class="row">
+        <div class="label">85) Uppercase Text</div>
+        <input class="tb tb-85" type="text" placeholder="tb-85 – Uppercase Text" />
+      </div>
+
+      <div class="row">
+        <div class="label">86) Letter Spaced</div>
+        <input class="tb tb-86" type="text" placeholder="tb-86 – Letter Spaced" />
+      </div>
+
+      <div class="row">
+        <div class="label">87) Serif Font</div>
+        <input class="tb tb-87" type="text" placeholder="tb-87 – Serif Font" />
+      </div>
+
+      <div class="row">
+        <div class="label">88) Pill With Icon</div>
+        <input class="tb tb-88" type="text" placeholder="tb-88 – Pill With Icon" />
+      </div>
+
+      <div class="row">
+        <div class="label">89) Deep Focus Ring Stack</div>
+        <input class="tb tb-89" type="text" placeholder="tb-89 – Deep Focus Ring Stack" />
+      </div>
+
+      <div class="row">
+        <div class="label">90) Icon Separator</div>
+        <input class="tb tb-90" type="text" placeholder="tb-90 – Icon Separator" />
+      </div>
+
+      <div class="row">
+        <div class="label">91) Single Corner Cut</div>
+        <input class="tb tb-91" type="text" placeholder="tb-91 – Single Corner Cut" />
+      </div>
+
+      <div class="row">
+        <div class="label">92) Opposite Corner Cuts</div>
+        <input class="tb tb-92" type="text" placeholder="tb-92 – Opposite Corner Cuts" />
+      </div>
+
+      <div class="row">
+        <div class="label">93) Thick Colored Bottom</div>
+        <input class="tb tb-93" type="text" placeholder="tb-93 – Thick Colored Bottom" />
+      </div>
+
+      <div class="row">
+        <div class="label">94) Thick Colored Top</div>
+        <input class="tb tb-94" type="text" placeholder="tb-94 – Thick Colored Top" />
+      </div>
+
+      <div class="row">
+        <div class="label">95) Left Accent Border Thick</div>
+        <input class="tb tb-95" type="text" placeholder="tb-95 – Left Accent Border Thick" />
+      </div>
+
+      <div class="row">
+        <div class="label">96) Right Accent Border Thick</div>
+        <input class="tb tb-96" type="text" placeholder="tb-96 – Right Accent Border Thick" />
+      </div>
+
+      <div class="row">
+        <div class="label">97) Grid Texture Background</div>
+        <input class="tb tb-97" type="text" placeholder="tb-97 – Grid Texture Background" />
+      </div>
+
+      <div class="row">
+        <div class="label">98) Diagonal Lines Background</div>
+        <input class="tb tb-98" type="text" placeholder="tb-98 – Diagonal Lines Background" />
+      </div>
+
+      <div class="row">
+        <div class="label">99) Glass Pill With Icon</div>
+        <input class="tb tb-99" type="text" placeholder="tb-99 – Glass Pill With Icon" />
+      </div>
+
+      <div class="row">
+        <div class="label">100) Grand Finale Gradient Pill</div>
+        <input class="tb tb-100" type="text" placeholder="tb-100 – Grand Finale Gradient Pill" />
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>

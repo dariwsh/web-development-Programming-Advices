@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elegant CV – Scroll-Snap + Donut Skills (No JS)</title>
+  <link rel="stylesheet" href="Project 3 - CV - Layout 3.css" />
+  <!--
+  🧑‍🏫 STUDENT PROJECT #4 — WHAT YOU'LL PRACTICE
+  • Scroll-snapping whole sections with pure CSS (no JS).
+  • Highlighting the active section using anchor targets (:target).
+  • Building circular “donut” meters with conic-gradients.
+  • Accessible, native accordions (details/summary).
+  • Subtle “glass” cards + hover lift.
+  • Auto dark mode via prefers-color-scheme and motion-reduction.
+  -->
+
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- ================================ HERO (always visible; not snapped) ================================ -->
+  <header class="hero" aria-label="Intro">
+    <div class="hero-inner">
+      <div class="avatar" role="img" aria-label="Profile photo">
+        <!-- 🔁 Replace with your actual image file -->
+        <img src="images/MyImage.jpg" alt="Ahmed Darwish portrait" loading="lazy" />
+      </div>
+
+      <div class="title">
+        <h1>Ahmed Darwish</h1>
+        <p class="muted">IT Student • Junior Developer</p>
+
+        <!-- 📍 Mobile-friendly inline nav jumps to the snapped sections -->
+        <nav class="hero-nav" aria-label="Sections">
+          <a class="pill" href="#about">About</a>
+          <a class="pill" href="#skills">Skills</a>
+          <a class="pill" href="#experience">Experience</a>
+          <a class="pill" href="#projects">Projects</a>
+          <a class="pill" href="#education">Education</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================ SCROLL-SNAP CONTAINER ================================ -->
+  <main class="snap" aria-label="Scrollable resume">
+    <!-- ▸ ABOUT -->
+    <section id="about" class="section">
+      <article class="card" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p class="lead">
+          I'm Ahmed Mohamed Mostafa Darwish, an IT Student at Borg El Arab Technological University with a strong foundation in programming and problem solving.
+        </p>
+        <ul class="clean">
+          <li><strong>Location:</strong> Alexandria, Egypt</li>
+          <li><strong>Languages:</strong> Arabic (Native), English (Professional)</li>
+          <li><strong>Contact:</strong> dariwshpro@gmail.com • +20 015 50225603</li>
+          <li><strong>Links:</strong> <a href="https://github.com/dariwsh" target="_blank" rel="noopener">GitHub</a> • <a href="https://www.linkedin.com/in/ahmed-darwish-33b752330/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ▸ SKILLS (donut meters use --val for percentage) -->
+    <section id="skills" class="section">
+      <article class="card" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <p class="muted">
+          CSS donuts below are pure CSS (<code>conic-gradient</code>). Set values with <code>--val</code>.
+        </p>
+
+        <div class="skills" role="list">
+          <div role="listitem" class="skill">
+            <div class="donut" style="--val: 90"><span>90%</span></div>
+            <p><strong>C & C++</strong><br><span class="muted">Algorithms, Data Structures, OOP</span></p>
+          </div>
+        
+          <div role="listitem" class="skill">
+            <div class="donut" style="--val: 88"><span>88%</span></div>
+            <p><strong>Web Development</strong><br><span class="muted">HTML5, CSS3, JavaScript</span></p>
+          </div>
+
+          <div role="listitem" class="skill">
+            <div class="donut" style="--val: 82"><span>82%</span></div>
+            <p><strong>Java & Python</strong><br><span class="muted">OOP, Foundations, Scripting</span></p>
+          </div>
+
+          <div role="listitem" class="skill">
+            <div class="donut" style="--val: 85"><span>85%</span></div>
+            <p><strong>Database & Tools</strong><br><span class="muted">SQL, Git, GitHub, VS Code</span></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ▸ EXPERIENCE (native accordion) -->
+    <section id="experience" class="section">
+      <article class="card" aria-labelledby="exp-title">
+        <h2 id="exp-title">Experience & Training</h2>
+
+        <!-- details/summary are keyboard & screen-reader friendly by default -->
+        <details open>
+          <summary>
+            Web Development Trainee <span class="when">• Sprints (Microsoft) • 2025</span>
+          </summary>
+          <ul class="clean muted">
+            <li>Built modern, responsive web interfaces with semantic HTML5, CSS3, and JavaScript.</li>
+            <li>Implemented real-world projects and followed clean code standards.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            Independent Developer <span class="when">• Self-Directed • 2024—Present</span>
+          </summary>
+          <ul class="clean muted">
+            <li>Authored complete programming foundation repositories in C++, Java, and algorithms.</li>
+            <li>Maintained source code and version control with Git & GitHub.</li>
+          </ul>
+        </details>
+      </article>
+    </section>
+
+    <!-- ▸ PROJECTS (glass cards + hover lift) -->
+    <section id="projects" class="section">
+      <article class="card" aria-labelledby="proj-title">
+        <h2 id="proj-title">Selected Projects</h2>
+
+        <div class="projects">
+          <a class="proj" href="https://github.com/ahmedmohammedmostafadarwwesh/Build" target="_blank" rel="noopener" aria-label="E-Commerce Website">
+            <h3>E-Commerce Website</h3>
+            <p class="muted">Multi-page responsive store platform with cart and blog.</p>
+          </a>
+
+          <a class="proj" href="https://ahmedmohammedmostafadarwwesh.github.io/CRUDS_2./" target="_blank" rel="noopener" aria-label="CRUDIE App">
+            <h3>CRUDIE System</h3>
+            <p class="muted">CRUD operations app with clean interface for data management.</p>
+          </a>
+
+          <a class="proj" href="https://github.com/dariwsh/Programming-Foundations" target="_blank" rel="noopener" aria-label="Programming Foundations">
+            <h3>Programming Foundations</h3>
+            <p class="muted">Complete C++ journey covering algorithms, data structures, and OOP.</p>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ▸ EDUCATION -->
+    <section id="education" class="section">
+      <article class="card" aria-labelledby="edu-title">
+        <h2 id="edu-title">Education & Certifications</h2>
+        <p>
+          <strong>Bachelor of Information Technology (IT)</strong><br/>
+          Borg El Arab Technological University • 2023—2028
+        </p>
+        <ul class="clean muted">
+          <li>Studying core IT, software engineering, databases, and networks</li>
+          <li>Certificates: Dr. Mohamed Abu Hadhoud (24 Certs), Sprints Web Development, ICDL Base</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 🧭 The sticky dot nav must be a sibling AFTER the sections
+         so the :target ~ .dotnav highlighting selectors can match. -->
+    <nav class="dotnav" aria-label="Quick section nav">
+      <a href="#about" title="About"></a>
+      <a href="#skills" title="Skills"></a>
+      <a href="#experience" title="Experience"></a>
+      <a href="#projects" title="Projects"></a>
+      <a href="#education" title="Education"></a>
+    </nav>
+  </main>
+</body>
+</html>
