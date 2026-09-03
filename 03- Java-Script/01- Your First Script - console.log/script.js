@@ -7,3 +7,10 @@ console.log("Ready for practice!");
 
 console.log(5 + 5);
 console.log(5 - 5);
+
+console.log("Ready for practice!");
+console.log("Ready for practice!");
+console.log("Ready for practice!");
+console.log("Ready for practice!");
+console.log("Ready for practice!");
+D
