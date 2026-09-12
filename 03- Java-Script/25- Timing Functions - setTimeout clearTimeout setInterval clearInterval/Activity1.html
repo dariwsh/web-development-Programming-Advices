@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="pressStrat">Press strat</h1>
+    <button onclick="startTimer()">Start</button>
+
+    <script>
+
+      function startTimer() {
+        let timeleft = 1;
+        let count = 0;
+
+        let koko = document.getElementById("pressStrat");
+
+        let countdown = setInterval(() =>{
+            if(count === 0)
+        {
+             koko.textContent ="Strating soon...;";
+            count++;
+        }
+        else
+        {
+            koko.textContent = "Running... " + timeleft;
+            timeleft++;
+           if(timeleft === 7)
+           {
+            clearInterval(countdown);
+            koko.textContent = "Process complete";
+        }
+        }
+
+      }, 1000);
+    }
+    </script>
+  </body>
+</html>
