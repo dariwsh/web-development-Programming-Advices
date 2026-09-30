@@ -1,6 +1,6 @@
 // ==========================================
-// Lesson 046: IndexedDB - Creating Indexes and Searching Data
+// Lesson 047: IndexedDB Cursor-Based Searching
 // ==========================================
 
-console.log("=== Lesson 046: IndexedDB - Creating Indexes and Searching Data ===");
+console.log("=== Lesson 047: IndexedDB Cursor-Based Searching ===");
 console.log("Ready for practice!");

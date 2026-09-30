@@ -5,8 +5,14 @@
 }
 
 body {
+    /* ضبط صورة الخلفية وإضافة طبقة غامقة فوقها لتوضيح النصوص */
+    background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('images/tasbeeh-gold.png');
+    background-size: cover;       /* تجعل الصورة تغطي كامل الشاشة */
+    background-position: center;  /* توسيط الصورة */
+    background-repeat: no-repeat; /* عدم تكرار الصورة */
+    background-attachment: fixed; /* ثبات الخلفية عند التمرير */
+
     font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    background: #0f172a;
     color: #f8fafc;
     display: flex;
     justify-content: center;
@@ -14,15 +20,14 @@ body {
     min-height: 100vh;
     padding: 20px;
 }
-
 .card {
-    background: #1e293b;
+    background: #0e1114;
     padding: 2.5rem;
     border-radius: 1rem;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(83, 175, 12, 0.5);
     max-width: 650px;
     width: 100%;
-    border: 1px solid #334155;
+    border: 1px solid gold;
     text-align: center;
 }
 
@@ -39,9 +44,9 @@ body {
 }
 
 h1 {
-    color: #f1f5f9;
+    color: gold;
     font-size: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
     line-height: 1.4;
 }
 
@@ -51,13 +56,37 @@ p {
     margin-bottom: 1.5rem;
 }
 
-.hint {
-    font-size: 0.9rem;
-    color: #cbd5e1;
-    background: #0f172a;
-    padding: 1rem;
+.btn{
+    background: gold;
+    color: rgb(18, 14, 2);
+    padding: 0.75rem 1.5rem;
+    border: none;
     border-radius: 0.5rem;
-    border-left: 4px solid #38bdf8;
-    text-align: left;
-    line-height: 1.5;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+}
+
+.logo {
+    position: absolute;
+    top: 10px;  /* المسافة من الأعلى */
+    left: 10px; /* المسافة من اليسار */
+    width: 20px;
+    height: 20px;
+}
+.logo img {
+    width: 170px;      /* يمكنك تعديل الحجم من هنا */
+    height: auto;      /* للحفاظ على تناسق أبعاد الصورة */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+.logo a{
+    text-decoration: none;
+    margin-top:30px;
+    color:gold;
+}
+.logo a:hover{
+    text-decoration: none;
+    margin-top:30px;
+    color:gold;
 }

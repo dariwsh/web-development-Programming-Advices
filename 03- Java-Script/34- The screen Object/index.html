@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>037- The screen Object</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<title>Size Comparison</title>
+<style>
+  body { font-family: Arial; padding: 20px; }
+  pre { background: #f4f4f4; padding: 20px; border-radius: 8px; }
+</style>
 </head>
 <body>
-    <div class="card">
-        <span class="badge">Lesson 037</span>
-        <h1>The screen Object</h1>
-        <p>JavaScript Essentials Guide</p>
-        <div class="hint">💡 <strong>ملحوظة:</strong> افتح الـ Console (F12) لمشاهدة المخرجات والتطبيق العملي.</div>
-    </div>
+
+<h2>Screen vs Window vs Document Sizes</h2>
+<button onclick="showSizes()">Show All Sizes</button>
+
+<pre id="output"></pre>
+
+<script>
+function showSizes() {
+  document.getElementById("output").textContent = `
+🖥️ SCREEN:
+ width:  ${screen.width}
+ height: ${screen.height}
+
+🪟 WINDOW:
+ innerWidth:  ${window.innerWidth}
+ innerHeight: ${window.innerHeight}
+ outerWidth:  ${window.outerWidth}
+ outerHeight: ${window.outerHeight}
+
+📄 DOCUMENT:
+ scrollWidth:  ${document.documentElement.scrollWidth}
+ scrollHeight: ${document.documentElement.scrollHeight}
+ clientWidth:  ${document.documentElement.clientWidth}
+ clientHeight: ${document.documentElement.clientHeight}
+  `;
+
+}
+</script>
+
 </body>
 </html>

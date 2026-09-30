@@ -1,18 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>033- JavaScript Scrolling Methods - scrollX scrollY scrollTo scrollBy</title>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      033- JavaScript Scrolling Methods - scrollX scrollY scrollTo scrollBy
+    </title>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="card">
-        <span class="badge">Lesson 033</span>
-        <h1>JavaScript Scrolling Methods - scrollX scrollY scrollTo scrollBy</h1>
-        <p>JavaScript Essentials Guide</p>
-        <div class="hint">💡 <strong>ملحوظة:</strong> افتح الـ Console (F12) لمشاهدة المخرجات والتطبيق العملي.</div>
+      <span class="badge">Lesson 033</span>
+      <h1>JavaScript Scrolling Methods - scrollX scrollY scrollTo scrollBy</h1>
+      <p>JavaScript Essentials Guide</p>
+      <h1>ScrollX / ScrollY / ScrollTo / ScrollBy</h1>
+
+      <button onclick="showScroll()">Show Scroll Position</button>
+      <button onclick="scrollToTop()">Scroll To Top</button>
+      <button onclick="scrollDown()">Scroll Down (By 300px)</button>
+      <button onclick="scrollSmooth()">Smooth Scroll To Bottom</button>
+
+      <div id="output">Current Scroll: X=0, Y=0</div>
+
+      <!-- Scroll Up button -->
+      <button id="scrollUp" onclick="scrollToTop()">⬆ Scroll Up</button>
+      <div class="hint">
+        💡 <strong>ملحوظة:</strong> افتح الـ Console (F12) لمشاهدة المخرجات
+        والتطبيق العملي.
+      </div>
     </div>
-</body>
+  </body>
 </html>
